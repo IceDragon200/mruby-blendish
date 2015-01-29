@@ -17,5 +17,5 @@ MRuby::Gem::Specification.new('mruby-blendish') do |spec|
   # I treat all warnings as errors...
   spec.cc.flags.reject! { |s| s.include?('-Wdeclaration-after-statement') }
   # last but not least, this gem requires nanovg
-  add_dependency 'mruby-nanovg', path: '/home/icy/docs/codes/IceDragon/mruby-gems/mruby-nanovg'
+  add_dependency 'mruby-nanovg', github: 'IceDragon200/mruby-nanovg'
 end
