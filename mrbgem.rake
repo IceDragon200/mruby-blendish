@@ -16,6 +16,8 @@ MRuby::Gem::Specification.new('mruby-blendish') do |spec|
   # the declaration-after-statement warning will cause it to flip out, since
   # I treat all warnings as errors...
   spec.cc.flags.reject! { |s| s.include?('-Wdeclaration-after-statement') }
+  # OUI
+  add_dependency 'mruby-oui',    github: 'IceDragon200/mruby-oui'
   # last but not least, this gem requires nanovg
   add_dependency 'mruby-nanovg', github: 'IceDragon200/mruby-nanovg'
 end

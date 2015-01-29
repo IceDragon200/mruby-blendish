@@ -13,6 +13,7 @@
 
 #include "oui_helper_macros.h"
 
+static struct RClass *oui_module;
 static struct RClass *bnd_class;
 static struct RClass *bnd_icon_module;
 
@@ -890,9 +891,10 @@ bnd_node_wire_color(mrb_state *mrb, mrb_value self)
 }
 
 void
-mrb_bnd_init(mrb_state *mrb, struct RClass *mod)
+mrb_mruby_blendish_gem_init(mrb_state* mrb)
 {
-  bnd_class = mrb_define_class_under(mrb, mod, "Blendish", mrb->object_class);
+  oui_module = mrb_define_module(mrb, "OUI");
+  bnd_class = mrb_define_class_under(mrb, oui_module, "Blendish", mrb->object_class);
   bnd_icon_module = mrb_define_module_under(mrb, bnd_class, "Icon");
 
   mrb_define_method(mrb, bnd_class, "theme=",                   bnd_set_theme,                MRB_ARGS_REQ(1));
@@ -1458,4 +1460,10 @@ mrb_bnd_init(mrb_state *mrb, struct RClass *mod)
   mrb_define_const(mrb, bnd_icon_module, "IMAGE_ALPHA", mrb_fixnum_value(BND_ICON_IMAGE_ALPHA));
   mrb_define_const(mrb, bnd_icon_module, "IMAGE_ZDEPTH", mrb_fixnum_value(BND_ICON_IMAGE_ZDEPTH));
   mrb_define_const(mrb, bnd_icon_module, "IMAGEFILE", mrb_fixnum_value(BND_ICON_IMAGEFILE));
+}
+
+void
+mrb_mruby_blendish_gem_final(mrb_state* mrb)
+{
+  //
 }
