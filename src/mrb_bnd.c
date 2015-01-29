@@ -2,6 +2,7 @@
 #include <mruby/array.h>
 #include <mruby/class.h>
 #include <mruby/data.h>
+#include <mruby/string.h>
 #include <mruby/value.h>
 
 #include "mrb_bnd.h"
@@ -14,6 +15,15 @@
 
 static struct RClass *bnd_class;
 static struct RClass *bnd_icon_module;
+
+static inline char*
+maybe_string(mrb_state *mrb, mrb_value str)
+{
+  if (mrb_nil_p(str)) {
+    return NULL;
+  }
+  return mrb_str_to_cstr(mrb, str);
+}
 
 static mrb_value
 bnd_set_theme(mrb_state *mrb, mrb_value self)
@@ -42,12 +52,12 @@ bnd_label(mrb_state *mrb, mrb_value self)
   mrb_float w;
   mrb_float h;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "dffffiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid, &label);
-  bndLabel(ctx, x, y, w, h, iconid, label);
+  bndLabel(ctx, x, y, w, h, iconid, maybe_string(mrb, label));
   return self;
 }
 
@@ -62,13 +72,13 @@ bnd_tool_button(mrb_state *mrb, mrb_value self)
   mrb_int flags;
   mrb_int state;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "dffffiiiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffiiio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &flags, &state,
                     &iconid, &label);
-  bndToolButton(ctx, x, y, w, h, flags, state, iconid, label);
+  bndToolButton(ctx, x, y, w, h, flags, state, iconid, maybe_string(mrb, label));
   return self;
 }
 
@@ -83,13 +93,13 @@ bnd_radio_button(mrb_state *mrb, mrb_value self)
   mrb_int flags;
   mrb_int state;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "dffffiiiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffiiio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &flags, &state,
                     &iconid, &label);
-  bndRadioButton(ctx, x, y, w, h, flags, state, iconid, label);
+  bndRadioButton(ctx, x, y, w, h, flags, state, iconid, maybe_string(mrb, label));
   return self;
 }
 
@@ -124,14 +134,15 @@ bnd_text_field(mrb_state *mrb, mrb_value self)
   mrb_int flags;
   mrb_int state;
   mrb_int iconid;
-  char *text;
+  mrb_value text;
   mrb_int cbegin;
   mrb_int cend;
-  mrb_get_args(mrb, "dffffiiizii",
+  mrb_get_args(mrb, "dffffiiioii",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &flags, &state, &iconid,
                     &text, &cbegin, &cend);
+  bndTextField(ctx, x, y, w, h, flags, state, iconid, maybe_string(mrb, text), cbegin, cend);
   return self;
 }
 
@@ -144,13 +155,13 @@ bnd_option_button(mrb_state *mrb, mrb_value self)
   mrb_float w;
   mrb_float h;
   mrb_int state;
-  char *label;
-  mrb_get_args(mrb, "dffffiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &state,
                     &label);
-  bndOptionButton(ctx, x, y, w, h, state, label);
+  bndOptionButton(ctx, x, y, w, h, state, maybe_string(mrb, label));
   return self;
 }
 
@@ -165,13 +176,13 @@ bnd_choice_button(mrb_state *mrb, mrb_value self)
   mrb_int flags;
   mrb_int state;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "dffffiiiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffiiio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &flags, &state, &iconid,
                     &label);
-  bndChoiceButton(ctx, x, y, w, h, flags, state, iconid, label);
+  bndChoiceButton(ctx, x, y, w, h, flags, state, iconid, maybe_string(mrb, label));
   return self;
 }
 
@@ -204,14 +215,14 @@ bnd_number_field(mrb_state *mrb, mrb_value self)
   mrb_float h;
   mrb_int flags;
   mrb_int state;
-  char *label;
-  char *value;
-  mrb_get_args(mrb, "dffffiizz",
+  mrb_value label;
+  mrb_value value;
+  mrb_get_args(mrb, "dffffiioo",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &flags, &state,
                     &label, &value);
-  bndNumberField(ctx, x, y, w, h, flags, state, label, value);
+  bndNumberField(ctx, x, y, w, h, flags, state, maybe_string(mrb, label), maybe_string(mrb, value));
   return self;
 }
 
@@ -226,15 +237,15 @@ bnd_slider(mrb_state *mrb, mrb_value self)
   mrb_int flags;
   mrb_int state;
   mrb_float progress;
-  char *label;
-  char *value;
-  mrb_get_args(mrb, "dffffiifzz",
+  mrb_value label;
+  mrb_value value;
+  mrb_get_args(mrb, "dffffiifoo",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &flags, &state,
                     &progress,
                     &label, &value);
-  bndNumberField(ctx, x, y, w, h, flags, state, label, value);
+  bndSlider(ctx, x, y, w, h, flags, state, progress, maybe_string(mrb, label), maybe_string(mrb, value));
   return self;
 }
 
@@ -284,13 +295,13 @@ bnd_menu_label(mrb_state *mrb, mrb_value self)
   mrb_float w;
   mrb_float h;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "dffffiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid,
                     &label);
-  bndMenuLabel(ctx, x, y, w, h, iconid, label);
+  bndMenuLabel(ctx, x, y, w, h, iconid, maybe_string(mrb, label));
   return self;
 }
 
@@ -304,13 +315,13 @@ bnd_menu_item(mrb_state *mrb, mrb_value self)
   mrb_float h;
   mrb_int state;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "dffffiiz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffiio",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &state, &iconid,
                     &label);
-  bndMenuItem(ctx, x, y, w, h, state, iconid, label);
+  bndMenuItem(ctx, x, y, w, h, state, iconid, maybe_string(mrb, label));
   return self;
 }
 
@@ -393,15 +404,15 @@ bnd_node_background(mrb_state *mrb, mrb_value self)
   mrb_float h;
   mrb_int state;
   mrb_int iconid;
-  char *label;
+  mrb_value label;
   NVGcolor *title_color;
-  mrb_get_args(mrb, "dffffiizd",
+  mrb_get_args(mrb, "dffffiiod",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &state, &iconid,
                     &label,
                     &title_color, &mrb_nvg_color_type);
-  bndNodeBackground(ctx, x, y, w, h, state, iconid, label, *title_color);
+  bndNodeBackground(ctx, x, y, w, h, state, iconid, maybe_string(mrb, label), *title_color);
   return self;
 }
 
@@ -444,12 +455,12 @@ bnd_label_width(mrb_state *mrb, mrb_value self)
 {
   NVGcontext *ctx;
   mrb_int iconid;
-  char *label;
-  mrb_get_args(mrb, "diz",
+  mrb_value label;
+  mrb_get_args(mrb, "dio",
                     &ctx, &mrb_nvg_context_type,
                     &iconid,
                     &label);
-  return mrb_float_value(mrb, bndLabelWidth(ctx, iconid, label));
+  return mrb_float_value(mrb, bndLabelWidth(ctx, iconid, maybe_string(mrb, label)));
 }
 
 static mrb_value
@@ -457,14 +468,14 @@ bnd_label_height(mrb_state *mrb, mrb_value self)
 {
   NVGcontext *ctx;
   mrb_int iconid;
-  char *label;
+  mrb_value label;
   mrb_float width;
-  mrb_get_args(mrb, "dizf",
+  mrb_get_args(mrb, "diof",
                     &ctx, &mrb_nvg_context_type,
                     &iconid,
                     &label,
                     &width);
-  return mrb_float_value(mrb, bndLabelHeight(ctx, iconid, label, width));
+  return mrb_float_value(mrb, bndLabelHeight(ctx, iconid, maybe_string(mrb, label), width));
 }
 
 static mrb_value
@@ -714,9 +725,9 @@ bnd_icon_label_value(mrb_state *mrb, mrb_value self)
   NVGcolor *color;
   mrb_int align;
   mrb_float fontsize;
-  char *label;
-  char *value;
-  mrb_get_args(mrb, "dffffidifzz",
+  mrb_value label;
+  mrb_value value;
+  mrb_get_args(mrb, "dffffidifoo",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid,
@@ -724,7 +735,7 @@ bnd_icon_label_value(mrb_state *mrb, mrb_value self)
                     &align,
                     &fontsize,
                     &label, &value);
-  bndIconLabelValue(ctx, x, y, w, h, iconid, *color, align, fontsize, label, value);
+  bndIconLabelValue(ctx, x, y, w, h, iconid, *color, align, fontsize, maybe_string(mrb, label), maybe_string(mrb, value));
   return self;
 }
 
@@ -741,8 +752,8 @@ bnd_node_icon_label(mrb_state *mrb, mrb_value self)
   NVGcolor *shadow_color;
   mrb_int align;
   mrb_float fontsize;
-  char *label;
-  mrb_get_args(mrb, "dffffiddifz",
+  mrb_value label;
+  mrb_get_args(mrb, "dffffiddifo",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid,
@@ -751,7 +762,7 @@ bnd_node_icon_label(mrb_state *mrb, mrb_value self)
                     &align,
                     &fontsize,
                     &label);
-  bndNodeIconLabel(ctx, x, y, w, h, iconid, *color, *shadow_color, align, fontsize, label);
+  bndNodeIconLabel(ctx, x, y, w, h, iconid, *color, *shadow_color, align, fontsize, maybe_string(mrb, label));
   return self;
 }
 
@@ -765,17 +776,17 @@ bnd_icon_label_text_position(mrb_state *mrb, mrb_value self)
   mrb_float h;
   mrb_int iconid;
   mrb_float fontsize;
-  char *label;
+  mrb_value label;
   mrb_int px;
   mrb_int py;
-  mrb_get_args(mrb, "dffffifzii",
+  mrb_get_args(mrb, "dffffifoii",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid,
                     &fontsize,
                     &label,
                     &px, &py);
-  return mrb_fixnum_value(bndIconLabelTextPosition(ctx, x, y, w, h, iconid, fontsize, label, px, py));
+  return mrb_fixnum_value(bndIconLabelTextPosition(ctx, x, y, w, h, iconid, fontsize, maybe_string(mrb, label), px, py));
 }
 
 static mrb_value
@@ -789,11 +800,11 @@ bnd_icon_label_caret(mrb_state *mrb, mrb_value self)
   mrb_int iconid;
   NVGcolor *color;
   mrb_float fontsize;
-  char *label;
+  mrb_value label;
   NVGcolor *caretcolor;
   mrb_int cbegin;
   mrb_int cend;
-  mrb_get_args(mrb, "dffffidfzdii",
+  mrb_get_args(mrb, "dffffidfodii",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid,
@@ -802,7 +813,7 @@ bnd_icon_label_caret(mrb_state *mrb, mrb_value self)
                     &label,
                     &caretcolor, &mrb_nvg_color_type,
                     &cbegin, &cend);
-  bndIconLabelCaret(ctx, x, y, w, h, iconid, *color, fontsize, label, *caretcolor, cbegin, cend);
+  bndIconLabelCaret(ctx, x, y, w, h, iconid, *color, fontsize, maybe_string(mrb, label), *caretcolor, cbegin, cend);
   return self;
 }
 
@@ -939,6 +950,8 @@ mrb_bnd_init(mrb_state *mrb, struct RClass *mod)
   mrb_bnd_node_theme_init(mrb, bnd_class);
   mrb_bnd_theme_init(mrb, bnd_class);
 
+  /* More */
+  mrb_define_const(mrb, bnd_class, "DISABLED_ALPHA", mrb_float_value(mrb, BND_DISABLED_ALPHA));
   /* BNDtextAlignment */
   mrb_define_const(mrb, bnd_class, "LEFT", mrb_fixnum_value(BND_LEFT));
   mrb_define_const(mrb, bnd_class, "CENTER", mrb_fixnum_value(BND_CENTER));
