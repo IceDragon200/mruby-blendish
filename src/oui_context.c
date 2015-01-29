@@ -104,17 +104,17 @@ ng_DEF_FUNC_N0(context_clear_state, uiClearState);
 ng_DEF_FUNC_N0_i(context_item, uiItem);
 ng_DEF_FUNC_N2(context_set_frozen, uiSetFrozen, "ib", mrb_int, mrb_bool);
 
-static mrb_value
-context_set_handle(mrb_state *mrb, mrb_value self)
-{
-  mrb_int item;
-  mrb_value handle;
-  mrb_get_args(mrb, "io", &item, &handle);
-  uiSetHandle(item, mrb_cptr(handle));
-  return self;
-}
+//static mrb_value
+//context_set_handle(mrb_state *mrb, mrb_value self)
+//{
+//  mrb_int item;
+//  mrb_value handle;
+//  mrb_get_args(mrb, "io", &item, &handle);
+//  uiSetHandle(item, mrb_cptr(handle));
+//  return self;
+//}
 
-ng_DEF_FUNC_N2_cptr(context_alloc_handle, uiAllocHandle, "ii", mrb_int, mrb_int);
+//ng_DEF_FUNC_N2_cptr(context_alloc_handle, uiAllocHandle, "ii", mrb_int, mrb_int);
 
 static void
 context_handle_func(int item, UIevent event)
@@ -160,7 +160,7 @@ ng_DEF_FUNC_N1_i(context_next_sibling, uiNextSibling, "i", mrb_int);
 ng_DEF_FUNC_N0_i(context_get_item_count, uiGetItemCount);
 ng_DEF_FUNC_N0_i(context_get_alloc_size, uiGetAllocSize);
 ng_DEF_FUNC_N1_i(context_get_state, uiGetState, "i", mrb_int);
-ng_DEF_FUNC_N1_cptr(context_get_handle, uiGetHandle, "i", mrb_int);
+//ng_DEF_FUNC_N1_cptr(context_get_handle, uiGetHandle, "i", mrb_int);
 ng_DEF_FUNC_N0_i(context_get_hot_item, uiGetHotItem);
 ng_DEF_FUNC_N0_i(context_get_focused_item, uiGetFocusedItem);
 ng_DEF_FUNC_N5_i(context_find_item, uiFindItem, "iiiii", mrb_int, mrb_int, mrb_int, mrb_int, mrb_int);
@@ -217,8 +217,8 @@ mrb_oui_context_init(mrb_state *mrb, struct RClass *mod)
   mrb_define_method(mrb, context_class, "clear_state",            context_clear_state,            MRB_ARGS_NONE());
   mrb_define_method(mrb, context_class, "item",                   context_item,                   MRB_ARGS_NONE());
   mrb_define_method(mrb, context_class, "set_frozen",             context_set_frozen,             MRB_ARGS_REQ(2));
-  mrb_define_method(mrb, context_class, "set_handle",             context_set_handle,             MRB_ARGS_REQ(2));
-  mrb_define_method(mrb, context_class, "alloc_handle",           context_alloc_handle,           MRB_ARGS_REQ(2));
+  //mrb_define_method(mrb, context_class, "set_handle",             context_set_handle,             MRB_ARGS_REQ(2));
+  //mrb_define_method(mrb, context_class, "alloc_handle",           context_alloc_handle,           MRB_ARGS_REQ(2));
   mrb_define_method(mrb, context_class, "set_handler",            context_set_handler,            MRB_ARGS_BLOCK());
   mrb_define_method(mrb, context_class, "set_events",             context_set_events,             MRB_ARGS_REQ(2));
   mrb_define_method(mrb, context_class, "set_flags",              context_set_flags,              MRB_ARGS_REQ(2));
@@ -236,7 +236,7 @@ mrb_oui_context_init(mrb_state *mrb, struct RClass *mod)
   mrb_define_method(mrb, context_class, "item_count",             context_get_item_count,         MRB_ARGS_NONE());
   mrb_define_method(mrb, context_class, "alloc_size",             context_get_alloc_size,         MRB_ARGS_NONE());
   mrb_define_method(mrb, context_class, "state",                  context_get_state,              MRB_ARGS_REQ(1));
-  mrb_define_method(mrb, context_class, "handle",                 context_get_handle,             MRB_ARGS_REQ(1));
+  //mrb_define_method(mrb, context_class, "handle",                 context_get_handle,             MRB_ARGS_REQ(1));
   mrb_define_method(mrb, context_class, "hot_item",               context_get_hot_item,           MRB_ARGS_NONE());
   mrb_define_method(mrb, context_class, "focused_item",           context_get_focused_item,       MRB_ARGS_NONE());
   mrb_define_method(mrb, context_class, "find_item",              context_find_item,              MRB_ARGS_REQ(5));
