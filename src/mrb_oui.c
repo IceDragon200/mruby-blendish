@@ -13,13 +13,11 @@
 #include "mrb_bnd.h"
 
 static struct RClass *oui_module;
-static struct RClass *blendish_module;
 
 void
 mrb_mruby_blendish_gem_init(mrb_state* mrb)
 {
   oui_module = mrb_define_module(mrb, "OUI");
-  blendish_module = mrb_define_module(mrb, "Blendish");
 
   mrb_oui_vec2_init(mrb, oui_module);
   mrb_oui_rect_init(mrb, oui_module);
