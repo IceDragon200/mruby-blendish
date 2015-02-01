@@ -41,8 +41,8 @@ bnd_get_theme(mrb_state *mrb, mrb_value self)
   return mrb_bnd_theme_value(mrb, *bndGetTheme());
 }
 
-ng_DEF_FUNC_N1(bnd_set_icon_image, bndSetIconImage, "i", mrb_int);
-ng_DEF_FUNC_N1(bnd_set_font, bndSetFont, "i", mrb_int);
+nd_DEF_FUNC_N1(bnd_set_icon_image, bndSetIconImage, "i", mrb_int);
+nd_DEF_FUNC_N1(bnd_set_font, bndSetFont, "i", mrb_int);
 
 static mrb_value
 bnd_label(mrb_state *mrb, mrb_value self)
