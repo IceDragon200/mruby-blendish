@@ -1,6 +1,8 @@
 #ifndef MRUBY_BND_COMMON_H
 #define MRUBY_BND_COMMON_H
 
+#include <stdbool.h>
+
 #include <mruby.h>
 #include <mruby/value.h>
 #include <mruby/data.h>

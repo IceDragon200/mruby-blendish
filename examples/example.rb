@@ -1068,7 +1068,6 @@ class Example
   end
 
   def main
-    @ui.make_current
     @ui.set_handler do |ui, item, event|
       ui_handler(item, event)
     end
