@@ -11,7 +11,7 @@
 #include "bnd_node_theme.h"
 #include "bnd_theme.h"
 
-#include "oui_helper_macros.h"
+#include "mrb_helper_macros.h"
 
 static struct RClass *oui_module;
 static struct RClass *bnd_class;

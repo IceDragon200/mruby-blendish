@@ -2,6 +2,7 @@
 #define MRUBY_BND_COMMON_H
 
 #include <stdbool.h>
+#include <memory.h>
 
 #include <mruby.h>
 #include <mruby/value.h>
