@@ -503,14 +503,14 @@ bnd_select_corners(mrb_state *mrb, mrb_value self)
   float radiuses[4];
   mrb_float r;
   mrb_int flags;
-  mrb_value vals[4];
+  mrb_value result[4];
   mrb_get_args(mrb, "fi", &r, &flags);
   bndSelectCorners(radiuses, r, flags);
-  vals[0] = mrb_float_value(mrb, radiuses[0]);
-  vals[1] = mrb_float_value(mrb, radiuses[1]);
-  vals[2] = mrb_float_value(mrb, radiuses[2]);
-  vals[3] = mrb_float_value(mrb, radiuses[3]);
-  return mrb_ary_new_from_values(mrb, 4, vals);
+  result[0] = mrb_float_value(mrb, radiuses[0]);
+  result[1] = mrb_float_value(mrb, radiuses[1]);
+  result[2] = mrb_float_value(mrb, radiuses[2]);
+  result[3] = mrb_float_value(mrb, radiuses[3]);
+  return mrb_ary_new_from_values(mrb, 4, result);
 }
 
 static mrb_value
@@ -521,21 +521,21 @@ bnd_inner_colors(mrb_state *mrb, mrb_value self)
   mrb_bool flip_active;
   NVGcolor shade_top;
   NVGcolor shade_down;
-  mrb_value vals[2];
+  mrb_value result[2];
   mrb_get_args(mrb, "dib", &theme, &mrb_bnd_widget_theme_type,
                            &state,
                            &flip_active);
   bndInnerColors(&shade_top, &shade_down, theme, state, flip_active);
-  vals[0] = mrb_nvg_color_value(mrb, shade_top);
-  vals[1] = mrb_nvg_color_value(mrb, shade_down);
-  return mrb_ary_new_from_values(mrb, 2, vals);
+  result[0] = mrb_nvg_color_value(mrb, shade_top);
+  result[1] = mrb_nvg_color_value(mrb, shade_down);
+  return mrb_ary_new_from_values(mrb, 2, result);
 }
 
 static mrb_value
 bnd_text_color(mrb_state *mrb, mrb_value self)
 {
-  mrb_int state;
   BNDwidgetTheme *theme;
+  mrb_int state;
   mrb_get_args(mrb, "di", &theme, &mrb_bnd_widget_theme_type, &state);
   return mrb_nvg_color_value(mrb, bndTextColor(theme, state));
 }
@@ -885,8 +885,8 @@ bnd_node_arrow_down(mrb_state *mrb, mrb_value self)
 static mrb_value
 bnd_node_wire_color(mrb_state *mrb, mrb_value self)
 {
-  mrb_int state;
   BNDnodeTheme *theme;
+  mrb_int state;
   mrb_get_args(mrb, "di", &theme, &mrb_bnd_node_theme_type, &state);
   return mrb_nvg_color_value(mrb, bndNodeWireColor(theme, state));
 }
