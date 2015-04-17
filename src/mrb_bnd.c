@@ -114,15 +114,15 @@ bnd_text_field_text_position(mrb_state *mrb, mrb_value self)
   mrb_float w;
   mrb_float h;
   mrb_int iconid;
-  char *text;
+  mrb_value text;
   mrb_int px;
   mrb_int py;
-  mrb_get_args(mrb, "dffffizii",
+  mrb_get_args(mrb, "dffffioii",
                     &ctx, &mrb_nvg_context_type,
                     &x, &y, &w, &h,
                     &iconid, &text,
                     &px, &py);
-  return mrb_fixnum_value(bndTextFieldTextPosition(ctx, x, y, w, h, iconid, text, px, py));
+  return mrb_fixnum_value(bndTextFieldTextPosition(ctx, x, y, w, h, iconid, maybe_string(mrb, text), px, py));
 }
 
 static mrb_value
