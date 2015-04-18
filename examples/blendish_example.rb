@@ -1,3 +1,43 @@
+if Object.const_defined?(:Crand)
+  puts "Using Crand"
+
+  def crand
+    Crand.rand
+  end
+
+  def csrand(seed)
+    Crand.srand(seed)
+  end
+else
+  puts "Using Ruby rand wrapper"
+
+  def crand
+    (rand * 0x7F_FF_FF_FF).to_i
+  end
+
+  def csrand(seed)
+    srand(seed)
+  end
+end
+
+class Integer
+  def pred
+    self - 1
+  end unless method_defined?(:pred)
+
+  def round(*a)
+    to_f.round(*a)
+  end
+
+  def masked?(flag)
+    if flag == 0
+      self == 0
+    else
+      (self & flag) == flag
+    end
+  end
+end
+
 class Example
   module SubType
     LABEL = 0
@@ -96,8 +136,8 @@ class Example
   end
 
   def initialize
-    @bnd = BND.new
-    @ui = OUI::Context.new(4096, 1 << 20)
+    @bnd = BND::Context.new
+    create_ui
     @handles = {}
     @choice = Option.new(-1)
     @enum1 = Option.new(-1)
@@ -109,6 +149,10 @@ class Example
     @option3 = Option.new(false)
     @textbuffer = "The quick brown fox."
     init_handlers
+  end
+
+  def create_ui
+    @ui = OUI::Context.new(4096, 1 << 20)
   end
 
   def init_handlers
@@ -351,7 +395,7 @@ class Example
     data.handler = nil
     data.label = label
     data.color = color
-    @ui.set_events(item, OUI::BUTTON0_DOWN)
+    @ui.set_events item, OUI::BUTTON0_DOWN
     item
   end
 
@@ -674,7 +718,7 @@ class Example
       @bnd.text_field(vg,rx,ry,240,BND::WIDGET_HEIGHT,BND::CORNER_NONE,BND::ACTIVE,
           -1, edit_text, idx1, idx2)
 
-      draw_noodles(vg, 20, ry+50)
+      draw_noodles(vg, 20, ry + 50)
 
       rx += rw + 20
       ry = 10
@@ -880,33 +924,33 @@ class Example
     end
   end
 
+  SRAND_VALUE = 303
+
   def fill_wrap_row_box(box)
     m = 5
-    s = 100
     t = 50
 
-    srand(303)
+    csrand(SRAND_VALUE)
     20.times do |i|
-      hue = rand(360) / 360.0
-      width = 10 + rand(5) * 10
+      hue = (crand % 360) / 360.0
+      width = 10 + (crand % 5) * 10
 
-      u = nil
-      case rand(4)
+      u = case crand % 4
       when 0
-        u = demorect(box, "Layout( OUI::TOP )",
-                     hue, 0, OUI::TOP, width, t, m, m, m, m)
+        demorect(box, "Layout( OUI::TOP )",
+                 hue, 0, OUI::TOP, width, t, m, m, m, m)
       when 1
-        u = demorect(box, "Layout( OUI::VCENTER )",
-                    hue, 0, OUI::VCENTER, width, t/2, m, m, m, m)
+        demorect(box, "Layout( OUI::VCENTER )",
+                 hue, 0, OUI::VCENTER, width, t/2, m, m, m, m)
       when 2
-        u = demorect(box, "Layout( OUI::VFILL )",
-                    hue, 0, OUI::VFILL, width, t, m, m, m, m)
+        demorect(box, "Layout( OUI::VFILL )",
+                 hue, 0, OUI::VFILL, width, t, m, m, m, m)
       when 3
-        u = demorect(box, "Layout( OUI::DOWN )",
-                    hue, 0, OUI::DOWN, width, t/2, m, m, m, m)
+        demorect(box, "Layout( OUI::DOWN )",
+                 hue, 0, OUI::DOWN, width, t/2, m, m, m, m)
       end
 
-      if (rand(10) == 0)
+      if (crand % 10) == 0
         @ui.set_layout(u, @ui.layout(u) | OUI::BREAK)
       end
     end
@@ -914,31 +958,29 @@ class Example
 
   def fill_wrap_column_box(box)
     m = 5
-    s = 100
     t = 50
 
-    srand(303)
+    csrand(SRAND_VALUE)
     20.times do |i|
-      hue = rand(360) / 360.0
-      height = 10 + rand(5) * 10
+      hue = (crand % 360) % 360.0
+      height = 10 + (crand % 5) * 10
 
-      u = nil
-      case rand(4)
+      u = case crand % 4
       when 0
-        u = demorect(box, "Layout( OUI::LEFT )",
-                     hue, 0, OUI::LEFT, t, height, m, m, m, m)
+        demorect(box, "Layout( OUI::LEFT )",
+                 hue, 0, OUI::LEFT, t, height, m, m, m, m)
       when 1
-        u = demorect(box, "Layout( OUI::HCENTER )",
-                    hue, 0, OUI::HCENTER, t/2, height, m, m, m, m)
+        demorect(box, "Layout( OUI::HCENTER )",
+                 hue, 0, OUI::HCENTER, t/2, height, m, m, m, m)
       when 2
-        u = demorect(box, "Layout( OUI::HFILL )",
-                    hue, 0, OUI::HFILL, t, height, m, m, m, m)
+        demorect(box, "Layout( OUI::HFILL )",
+                 hue, 0, OUI::HFILL, t, height, m, m, m, m)
       when 3
-        u = demorect(box, "Layout( OUI::RIGHT )",
-                    hue, 0, OUI::RIGHT, t/2, height, m, m, m, m)
+        demorect(box, "Layout( OUI::RIGHT )",
+                 hue, 0, OUI::RIGHT, t/2, height, m, m, m, m)
       end
 
-      if (rand(10) == 0)
+      if (crand % 10) == 0
         @ui.set_layout(u, @ui.layout(u) | OUI::BREAK)
       end
     end
@@ -946,14 +988,11 @@ class Example
 
   def build_wrapdemo(parent)
     col = @ui.item
-
     @ui.insert(parent, col)
     @ui.set_box(col, OUI::COLUMN)
     @ui.set_layout(col, OUI::FILL)
 
     m = 5
-    s = 100
-    t = 50
 
     box = demorect(col, "Box( OUI::ROW | OUI::WRAP | OUI::START )\nLayout( OUI::HFILL | OUI::TOP )",
             0.6, OUI::ROW | OUI::WRAP | OUI::START, OUI::TOP, 0, 0, m, m, m, m)
@@ -1103,10 +1142,10 @@ class Example
 
     window.set_mouse_button_callback do |_, b, a, m|
       case b
-      when 1 then button = 2
-      when 2 then button = 1
+      when 1 then b = 2
+      when 2 then b = 1
       end
-      @ui.set_button(b, m, a == GLFW::PRESS)
+      @ui.set_button b, m, a == GLFW::PRESS
     end
 
     window.set_scroll_callback do |_, x, y|
@@ -1169,5 +1208,9 @@ class Example
   end
 end
 
-example = Example.new
-example.main
+def main
+  example = Example.new
+  example.main
+end
+
+main
