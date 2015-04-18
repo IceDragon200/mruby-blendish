@@ -1,4 +1,5 @@
 #include <mruby.h>
+#include <mruby/array.h>
 #include <mruby/class.h>
 #include <mruby/data.h>
 #include <mruby/value.h>
@@ -18,6 +19,12 @@ widget_theme_free(mrb_state *mrb, void *ptr)
 }
 
 const struct mrb_data_type mrb_bnd_widget_theme_type = { "BNDwidgetTheme", widget_theme_free };
+
+static inline BNDwidgetTheme*
+get_widget_theme(mrb_state *mrb, mrb_value self)
+{
+  return (BNDwidgetTheme*)mrb_data_get_ptr(mrb, self, &mrb_bnd_widget_theme_type);
+}
 
 mrb_value
 mrb_bnd_widget_theme_value(mrb_state *mrb, BNDwidgetTheme theme)
@@ -59,6 +66,33 @@ base_DEF_ATTR_ACCESSOR_NVGcolor(widget_theme_text_selected_color, &mrb_bnd_widge
 base_DEF_ATTR_ACCESSOR_i(widget_theme_shade_top, &mrb_bnd_widget_theme_type, BNDwidgetTheme, shadeTop);
 base_DEF_ATTR_ACCESSOR_i(widget_theme_shade_down, &mrb_bnd_widget_theme_type, BNDwidgetTheme, shadeDown);
 
+static mrb_value
+widget_theme_inner_colors(mrb_state *mrb, mrb_value self)
+{
+  BNDwidgetTheme *theme;
+  mrb_int state;
+  mrb_bool flip_active;
+  NVGcolor shade_top;
+  NVGcolor shade_down;
+  mrb_value result[2];
+  mrb_get_args(mrb, "ib", &state, &flip_active);
+  theme = get_widget_theme(mrb, self);
+  bndInnerColors(&shade_top, &shade_down, theme, state, flip_active);
+  result[0] = mrb_nvg_color_value(mrb, shade_top);
+  result[1] = mrb_nvg_color_value(mrb, shade_down);
+  return mrb_ary_new_from_values(mrb, 2, result);
+}
+
+static mrb_value
+widget_theme_text_color(mrb_state *mrb, mrb_value self)
+{
+  BNDwidgetTheme *theme;
+  mrb_int state;
+  mrb_get_args(mrb, "i", &state);
+  theme = get_widget_theme(mrb, self);
+  return mrb_nvg_color_value(mrb, bndTextColor(theme, state));
+}
+
 void
 mrb_bnd_widget_theme_init(mrb_state *mrb, struct RClass *mod)
 {
@@ -82,4 +116,7 @@ mrb_bnd_widget_theme_init(mrb_state *mrb, struct RClass *mod)
   mrb_define_method(mrb, widget_theme_class, "shade_top=",            widget_theme_shade_top_set,            MRB_ARGS_REQ(1));
   mrb_define_method(mrb, widget_theme_class, "shade_down",            widget_theme_shade_down_get,           MRB_ARGS_NONE());
   mrb_define_method(mrb, widget_theme_class, "shade_down=",           widget_theme_shade_down_set,           MRB_ARGS_REQ(1));
+
+  mrb_define_method(mrb, widget_theme_class, "inner_colors",          widget_theme_inner_colors,             MRB_ARGS_REQ(4));
+  mrb_define_method(mrb, widget_theme_class, "text_color",            widget_theme_text_color,               MRB_ARGS_REQ(1));
 }

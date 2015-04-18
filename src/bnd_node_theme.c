@@ -1,4 +1,5 @@
 #include <mruby.h>
+#include <mruby/array.h>
 #include <mruby/class.h>
 #include <mruby/data.h>
 #include <mruby/value.h>
@@ -19,12 +20,18 @@ node_theme_free(mrb_state *mrb, void *ptr)
 
 const struct mrb_data_type mrb_bnd_node_theme_type = { "BNDnodeTheme", node_theme_free };
 
+static inline BNDnodeTheme*
+get_node_theme(mrb_state *mrb, mrb_value self)
+{
+  return (BNDnodeTheme*)mrb_data_get_ptr(mrb, self, &mrb_bnd_node_theme_type);
+}
+
 mrb_value
 mrb_bnd_node_theme_value(mrb_state *mrb, BNDnodeTheme theme)
 {
   BNDnodeTheme *utheme;
   mrb_value result = mrb_obj_new(mrb, node_theme_class, 0, NULL);
-  utheme = (BNDnodeTheme*)DATA_PTR(result);
+  utheme = get_node_theme(mrb, result);
   *utheme = theme;
   return result;
 }
@@ -58,6 +65,16 @@ base_DEF_ATTR_ACCESSOR_NVGcolor(node_theme_wire_select_color, &mrb_bnd_node_them
 base_DEF_ATTR_ACCESSOR_NVGcolor(node_theme_node_backdrop_color, &mrb_bnd_node_theme_type, BNDnodeTheme, nodeBackdropColor);
 base_DEF_ATTR_ACCESSOR_i(node_theme_noodle_curving, &mrb_bnd_node_theme_type, BNDnodeTheme, noodleCurving);
 
+static mrb_value
+node_theme_node_wire_color(mrb_state *mrb, mrb_value self)
+{
+  BNDnodeTheme *theme;
+  mrb_int state;
+  mrb_get_args(mrb, "i", &state);
+  theme = get_node_theme(mrb, self);
+  return mrb_nvg_color_value(mrb, bndNodeWireColor(theme, state));
+}
+
 void
 mrb_bnd_node_theme_init(mrb_state *mrb, struct RClass *mod)
 {
@@ -79,5 +96,7 @@ mrb_bnd_node_theme_init(mrb_state *mrb, struct RClass *mod)
   mrb_define_method(mrb, node_theme_class, "node_backdrop_color=", node_theme_node_backdrop_color_set, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, node_theme_class, "noodle_curving",       node_theme_noodle_curving_get,      MRB_ARGS_NONE());
   mrb_define_method(mrb, node_theme_class, "noodle_curving=",      node_theme_noodle_curving_set,      MRB_ARGS_REQ(1));
+
+  mrb_define_method(mrb, node_theme_class, "node_wire_color",      node_theme_node_wire_color,         MRB_ARGS_REQ(1));
 }
 

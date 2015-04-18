@@ -514,33 +514,6 @@ bnd_select_corners(mrb_state *mrb, mrb_value self)
 }
 
 static mrb_value
-bnd_inner_colors(mrb_state *mrb, mrb_value self)
-{
-  BNDwidgetTheme *theme;
-  mrb_int state;
-  mrb_bool flip_active;
-  NVGcolor shade_top;
-  NVGcolor shade_down;
-  mrb_value result[2];
-  mrb_get_args(mrb, "dib", &theme, &mrb_bnd_widget_theme_type,
-                           &state,
-                           &flip_active);
-  bndInnerColors(&shade_top, &shade_down, theme, state, flip_active);
-  result[0] = mrb_nvg_color_value(mrb, shade_top);
-  result[1] = mrb_nvg_color_value(mrb, shade_down);
-  return mrb_ary_new_from_values(mrb, 2, result);
-}
-
-static mrb_value
-bnd_text_color(mrb_state *mrb, mrb_value self)
-{
-  BNDwidgetTheme *theme;
-  mrb_int state;
-  mrb_get_args(mrb, "di", &theme, &mrb_bnd_widget_theme_type, &state);
-  return mrb_nvg_color_value(mrb, bndTextColor(theme, state));
-}
-
-static mrb_value
 bnd_scroll_handle_rect(mrb_state *mrb, mrb_value self)
 {
   mrb_float x_in;
@@ -882,15 +855,6 @@ bnd_node_arrow_down(mrb_state *mrb, mrb_value self)
   return self;
 }
 
-static mrb_value
-bnd_node_wire_color(mrb_state *mrb, mrb_value self)
-{
-  BNDnodeTheme *theme;
-  mrb_int state;
-  mrb_get_args(mrb, "di", &theme, &mrb_bnd_node_theme_type, &state);
-  return mrb_nvg_color_value(mrb, bndNodeWireColor(theme, state));
-}
-
 void
 mrb_mruby_blendish_gem_init(mrb_state* mrb)
 {
@@ -929,8 +893,6 @@ mrb_mruby_blendish_gem_init(mrb_state* mrb)
   mrb_define_method(mrb, bnd_ctx_class, "transparent",              bnd_transparent,              MRB_ARGS_REQ(1));
   mrb_define_method(mrb, bnd_ctx_class, "offset_color",             bnd_offset_color,             MRB_ARGS_REQ(2));
   mrb_define_method(mrb, bnd_ctx_class, "select_corners",           bnd_select_corners,           MRB_ARGS_REQ(2));
-  mrb_define_method(mrb, bnd_ctx_class, "inner_colors",             bnd_inner_colors,             MRB_ARGS_REQ(5));
-  mrb_define_method(mrb, bnd_ctx_class, "text_color",               bnd_text_color,               MRB_ARGS_REQ(2));
   mrb_define_method(mrb, bnd_ctx_class, "scroll_handle_rect",       bnd_scroll_handle_rect,       MRB_ARGS_REQ(6));
   mrb_define_method(mrb, bnd_ctx_class, "rounded_box",              bnd_rounded_box,              MRB_ARGS_REQ(9));
   mrb_define_method(mrb, bnd_ctx_class, "background",               bnd_background,               MRB_ARGS_REQ(5));
@@ -948,7 +910,6 @@ mrb_mruby_blendish_gem_init(mrb_state* mrb)
   mrb_define_method(mrb, bnd_ctx_class, "arrow",                    bnd_arrow,                    MRB_ARGS_REQ(5));
   mrb_define_method(mrb, bnd_ctx_class, "up_down_arrow",            bnd_up_down_arrow,            MRB_ARGS_REQ(5));
   mrb_define_method(mrb, bnd_ctx_class, "node_arrow_down",          bnd_node_arrow_down,          MRB_ARGS_REQ(5));
-  mrb_define_method(mrb, bnd_ctx_class, "node_wire_color",          bnd_node_wire_color,          MRB_ARGS_REQ(2));
 
   mrb_bnd_widget_theme_init(mrb, bnd_module);
   mrb_bnd_node_theme_init(mrb, bnd_module);
