@@ -5,6 +5,7 @@ MRuby::Gem::Specification.new('mruby-blendish') do |spec|
   spec.summary = 'oui-blendish bindings'
   spec.description = 'A oui-blendish binding for mruby'
   spec.homepage = 'https://github.com/IceDragon200/mruby-blendish'
+
   # compiler config
   spec.cc.include_paths << ["#{build.root}/src"]
   # Treat all warnings as errors, forces you to write compliant code
@@ -16,7 +17,8 @@ MRuby::Gem::Specification.new('mruby-blendish') do |spec|
   # the declaration-after-statement warning will cause it to flip out, since
   # I treat all warnings as errors...
   spec.cc.flags.reject! { |s| s.include?('-Wdeclaration-after-statement') }
-  # OUI
+  # OUI, I think this is only needed for the example...
+  # TODO(IceDragon200): check if the oui dependency can be removed.
   add_dependency 'mruby-oui',    github: 'IceDragon200/mruby-oui'
   # last but not least, this gem requires nanovg
   add_dependency 'mruby-nanovg', github: 'IceDragon200/mruby-nanovg'
