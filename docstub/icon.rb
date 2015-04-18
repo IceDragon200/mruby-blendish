@@ -1,479 +1,953 @@
 module OUI
   module Blendish
-    # Icon Enums
+    # Icon IDs
     module Icon
+      # @!group Icons
+      # @return [Integer] BND_ICON_NONE
       NONE = Blendish.iconid(0, 29)
+      # @return [Integer] BND_ICON_QUESTION
       QUESTION = Blendish.iconid(1, 29)
+      # @return [Integer] BND_ICON_ERROR
       ERROR = Blendish.iconid(2, 29)
+      # @return [Integer] BND_ICON_CANCEL
       CANCEL = Blendish.iconid(3, 29)
+      # @return [Integer] BND_ICON_TRIA_RIGHT
       TRIA_RIGHT = Blendish.iconid(4, 29)
+      # @return [Integer] BND_ICON_TRIA_DOWN
       TRIA_DOWN = Blendish.iconid(5, 29)
+      # @return [Integer] BND_ICON_TRIA_LEFT
       TRIA_LEFT = Blendish.iconid(6, 29)
+      # @return [Integer] BND_ICON_TRIA_UP
       TRIA_UP = Blendish.iconid(7, 29)
+      # @return [Integer] BND_ICON_ARROW_LEFTRIGHT
       ARROW_LEFTRIGHT = Blendish.iconid(8, 29)
+      # @return [Integer] BND_ICON_PLUS
       PLUS = Blendish.iconid(9, 29)
+      # @return [Integer] BND_ICON_DISCLOSURE_TRI_DOWN
       DISCLOSURE_TRI_DOWN = Blendish.iconid(10, 29)
+      # @return [Integer] BND_ICON_DISCLOSURE_TRI_RIGHT
       DISCLOSURE_TRI_RIGHT = Blendish.iconid(11, 29)
+      # @return [Integer] BND_ICON_RADIOBUT_OFF
       RADIOBUT_OFF = Blendish.iconid(12, 29)
+      # @return [Integer] BND_ICON_RADIOBUT_ON
       RADIOBUT_ON = Blendish.iconid(13, 29)
+      # @return [Integer] BND_ICON_MENU_PANEL
       MENU_PANEL = Blendish.iconid(14, 29)
+      # @return [Integer] BND_ICON_BLENDER
       BLENDER = Blendish.iconid(15, 29)
+      # @return [Integer] BND_ICON_GRIP
       GRIP = Blendish.iconid(16, 29)
+      # @return [Integer] BND_ICON_DOT
       DOT = Blendish.iconid(17, 29)
+      # @return [Integer] BND_ICON_COLLAPSEMENU
       COLLAPSEMENU = Blendish.iconid(18, 29)
+      # @return [Integer] BND_ICON_X
       X = Blendish.iconid(19, 29)
+      # @return [Integer] BND_ICON_GO_LEFT
       GO_LEFT = Blendish.iconid(21, 29)
+      # @return [Integer] BND_ICON_PLUG
       PLUG = Blendish.iconid(22, 29)
+      # @return [Integer] BND_ICON_UI
       UI = Blendish.iconid(23, 29)
+      # @return [Integer] BND_ICON_NODE
       NODE = Blendish.iconid(24, 29)
+      # @return [Integer] BND_ICON_NODE_SEL
       NODE_SEL = Blendish.iconid(25, 29)
+      # @return [Integer] BND_ICON_FULLSCREEN
       FULLSCREEN = Blendish.iconid(0, 28)
+      # @return [Integer] BND_ICON_SPLITSCREEN
       SPLITSCREEN = Blendish.iconid(1, 28)
+      # @return [Integer] BND_ICON_RIGHTARROW_THIN
       RIGHTARROW_THIN = Blendish.iconid(2, 28)
+      # @return [Integer] BND_ICON_BORDERMOVE
       BORDERMOVE = Blendish.iconid(3, 28)
+      # @return [Integer] BND_ICON_VIEWZOOM
       VIEWZOOM = Blendish.iconid(4, 28)
+      # @return [Integer] BND_ICON_ZOOMIN
       ZOOMIN = Blendish.iconid(5, 28)
+      # @return [Integer] BND_ICON_ZOOMOUT
       ZOOMOUT = Blendish.iconid(6, 28)
+      # @return [Integer] BND_ICON_PANEL_CLOSE
       PANEL_CLOSE = Blendish.iconid(7, 28)
+      # @return [Integer] BND_ICON_COPY_ID
       COPY_ID = Blendish.iconid(8, 28)
+      # @return [Integer] BND_ICON_EYEDROPPER
       EYEDROPPER = Blendish.iconid(9, 28)
+      # @return [Integer] BND_ICON_LINK_AREA
       LINK_AREA = Blendish.iconid(10, 28)
+      # @return [Integer] BND_ICON_AUTO
       AUTO = Blendish.iconid(11, 28)
+      # @return [Integer] BND_ICON_CHECKBOX_DEHLT
       CHECKBOX_DEHLT = Blendish.iconid(12, 28)
+      # @return [Integer] BND_ICON_CHECKBOX_HLT
       CHECKBOX_HLT = Blendish.iconid(13, 28)
+      # @return [Integer] BND_ICON_UNLOCKED
       UNLOCKED = Blendish.iconid(14, 28)
+      # @return [Integer] BND_ICON_LOCKED
       LOCKED = Blendish.iconid(15, 28)
+      # @return [Integer] BND_ICON_UNPINNED
       UNPINNED = Blendish.iconid(16, 28)
+      # @return [Integer] BND_ICON_PINNED
       PINNED = Blendish.iconid(17, 28)
+      # @return [Integer] BND_ICON_SCREEN_BACK
       SCREEN_BACK = Blendish.iconid(18, 28)
+      # @return [Integer] BND_ICON_RIGHTARROW
       RIGHTARROW = Blendish.iconid(19, 28)
+      # @return [Integer] BND_ICON_DOWNARROW_HLT
       DOWNARROW_HLT = Blendish.iconid(20, 28)
+      # @return [Integer] BND_ICON_DOTSUP
       DOTSUP = Blendish.iconid(21, 28)
+      # @return [Integer] BND_ICON_DOTSDOWN
       DOTSDOWN = Blendish.iconid(22, 28)
+      # @return [Integer] BND_ICON_LINK
       LINK = Blendish.iconid(23, 28)
+      # @return [Integer] BND_ICON_INLINK
       INLINK = Blendish.iconid(24, 28)
+      # @return [Integer] BND_ICON_PLUGIN
       PLUGIN = Blendish.iconid(25, 28)
+      # @return [Integer] BND_ICON_HELP
       HELP = Blendish.iconid(0, 27)
+      # @return [Integer] BND_ICON_GHOST_ENABLED
       GHOST_ENABLED = Blendish.iconid(1, 27)
+      # @return [Integer] BND_ICON_COLOR
       COLOR = Blendish.iconid(2, 27)
+      # @return [Integer] BND_ICON_LINKED
       LINKED = Blendish.iconid(3, 27)
+      # @return [Integer] BND_ICON_UNLINKED
       UNLINKED = Blendish.iconid(4, 27)
+      # @return [Integer] BND_ICON_HAND
       HAND = Blendish.iconid(5, 27)
+      # @return [Integer] BND_ICON_ZOOM_ALL
       ZOOM_ALL = Blendish.iconid(6, 27)
+      # @return [Integer] BND_ICON_ZOOM_SELECTED
       ZOOM_SELECTED = Blendish.iconid(7, 27)
+      # @return [Integer] BND_ICON_ZOOM_PREVIOUS
       ZOOM_PREVIOUS = Blendish.iconid(8, 27)
+      # @return [Integer] BND_ICON_ZOOM_IN
       ZOOM_IN = Blendish.iconid(9, 27)
+      # @return [Integer] BND_ICON_ZOOM_OUT
       ZOOM_OUT = Blendish.iconid(10, 27)
+      # @return [Integer] BND_ICON_RENDER_REGION
       RENDER_REGION = Blendish.iconid(11, 27)
+      # @return [Integer] BND_ICON_BORDER_RECT
       BORDER_RECT = Blendish.iconid(12, 27)
+      # @return [Integer] BND_ICON_BORDER_LASSO
       BORDER_LASSO = Blendish.iconid(13, 27)
+      # @return [Integer] BND_ICON_FREEZE
       FREEZE = Blendish.iconid(14, 27)
+      # @return [Integer] BND_ICON_STYLUS_PRESSURE
       STYLUS_PRESSURE = Blendish.iconid(15, 27)
+      # @return [Integer] BND_ICON_GHOST_DISABLED
       GHOST_DISABLED = Blendish.iconid(16, 27)
+      # @return [Integer] BND_ICON_NEW
       NEW = Blendish.iconid(17, 27)
+      # @return [Integer] BND_ICON_FILE_TICK
       FILE_TICK = Blendish.iconid(18, 27)
+      # @return [Integer] BND_ICON_QUIT
       QUIT = Blendish.iconid(19, 27)
+      # @return [Integer] BND_ICON_URL
       URL = Blendish.iconid(20, 27)
+      # @return [Integer] BND_ICON_RECOVER_LAST
       RECOVER_LAST = Blendish.iconid(21, 27)
+      # @return [Integer] BND_ICON_FULLSCREEN_ENTER
       FULLSCREEN_ENTER = Blendish.iconid(23, 27)
+      # @return [Integer] BND_ICON_FULLSCREEN_EXIT
       FULLSCREEN_EXIT = Blendish.iconid(24, 27)
+      # @return [Integer] BND_ICON_BLANK1
       BLANK1 = Blendish.iconid(25, 27)
+      # @return [Integer] BND_ICON_LAMP
       LAMP = Blendish.iconid(0, 26)
+      # @return [Integer] BND_ICON_MATERIAL
       MATERIAL = Blendish.iconid(1, 26)
+      # @return [Integer] BND_ICON_TEXTURE
       TEXTURE = Blendish.iconid(2, 26)
+      # @return [Integer] BND_ICON_ANIM
       ANIM = Blendish.iconid(3, 26)
+      # @return [Integer] BND_ICON_WORLD
       WORLD = Blendish.iconid(4, 26)
+      # @return [Integer] BND_ICON_SCENE
       SCENE = Blendish.iconid(5, 26)
+      # @return [Integer] BND_ICON_EDIT
       EDIT = Blendish.iconid(6, 26)
+      # @return [Integer] BND_ICON_GAME
       GAME = Blendish.iconid(7, 26)
+      # @return [Integer] BND_ICON_RADIO
       RADIO = Blendish.iconid(8, 26)
+      # @return [Integer] BND_ICON_SCRIPT
       SCRIPT = Blendish.iconid(9, 26)
+      # @return [Integer] BND_ICON_PARTICLES
       PARTICLES = Blendish.iconid(10, 26)
+      # @return [Integer] BND_ICON_PHYSICS
       PHYSICS = Blendish.iconid(11, 26)
+      # @return [Integer] BND_ICON_SPEAKER
       SPEAKER = Blendish.iconid(12, 26)
+      # @return [Integer] BND_ICON_TEXTURE_SHADED
       TEXTURE_SHADED = Blendish.iconid(13, 26)
+      # @return [Integer] BND_ICON_VIEW3D
       VIEW3D = Blendish.iconid(0, 25)
+      # @return [Integer] BND_ICON_IPO
       IPO = Blendish.iconid(1, 25)
+      # @return [Integer] BND_ICON_OOPS
       OOPS = Blendish.iconid(2, 25)
+      # @return [Integer] BND_ICON_BUTS
       BUTS = Blendish.iconid(3, 25)
+      # @return [Integer] BND_ICON_FILESEL
       FILESEL = Blendish.iconid(4, 25)
+      # @return [Integer] BND_ICON_IMAGE_COL
       IMAGE_COL = Blendish.iconid(5, 25)
+      # @return [Integer] BND_ICON_INFO
       INFO = Blendish.iconid(6, 25)
+      # @return [Integer] BND_ICON_SEQUENCE
       SEQUENCE = Blendish.iconid(7, 25)
+      # @return [Integer] BND_ICON_TEXT
       TEXT = Blendish.iconid(8, 25)
+      # @return [Integer] BND_ICON_IMASEL
       IMASEL = Blendish.iconid(9, 25)
+      # @return [Integer] BND_ICON_SOUND
       SOUND = Blendish.iconid(10, 25)
+      # @return [Integer] BND_ICON_ACTION
       ACTION = Blendish.iconid(11, 25)
+      # @return [Integer] BND_ICON_NLA
       NLA = Blendish.iconid(12, 25)
+      # @return [Integer] BND_ICON_SCRIPTWIN
       SCRIPTWIN = Blendish.iconid(13, 25)
+      # @return [Integer] BND_ICON_TIME
       TIME = Blendish.iconid(14, 25)
+      # @return [Integer] BND_ICON_NODETREE
       NODETREE = Blendish.iconid(15, 25)
+      # @return [Integer] BND_ICON_LOGIC
       LOGIC = Blendish.iconid(16, 25)
+      # @return [Integer] BND_ICON_CONSOLE
       CONSOLE = Blendish.iconid(17, 25)
+      # @return [Integer] BND_ICON_PREFERENCES
       PREFERENCES = Blendish.iconid(18, 25)
+      # @return [Integer] BND_ICON_CLIP
       CLIP = Blendish.iconid(19, 25)
+      # @return [Integer] BND_ICON_ASSET_MANAGER
       ASSET_MANAGER = Blendish.iconid(20, 25)
+      # @return [Integer] BND_ICON_OBJECT_DATAMODE
       OBJECT_DATAMODE = Blendish.iconid(0, 24)
+      # @return [Integer] BND_ICON_EDITMODE_HLT
       EDITMODE_HLT = Blendish.iconid(1, 24)
+      # @return [Integer] BND_ICON_FACESEL_HLT
       FACESEL_HLT = Blendish.iconid(2, 24)
+      # @return [Integer] BND_ICON_VPAINT_HLT
       VPAINT_HLT = Blendish.iconid(3, 24)
+      # @return [Integer] BND_ICON_TPAINT_HLT
       TPAINT_HLT = Blendish.iconid(4, 24)
+      # @return [Integer] BND_ICON_WPAINT_HLT
       WPAINT_HLT = Blendish.iconid(5, 24)
+      # @return [Integer] BND_ICON_SCULPTMODE_HLT
       SCULPTMODE_HLT = Blendish.iconid(6, 24)
+      # @return [Integer] BND_ICON_POSE_HLT
       POSE_HLT = Blendish.iconid(7, 24)
+      # @return [Integer] BND_ICON_PARTICLEMODE
       PARTICLEMODE = Blendish.iconid(8, 24)
+      # @return [Integer] BND_ICON_LIGHTPAINT
       LIGHTPAINT = Blendish.iconid(9, 24)
+      # @return [Integer] BND_ICON_SCENE_DATA
       SCENE_DATA = Blendish.iconid(0, 23)
+      # @return [Integer] BND_ICON_RENDERLAYERS
       RENDERLAYERS = Blendish.iconid(1, 23)
+      # @return [Integer] BND_ICON_WORLD_DATA
       WORLD_DATA = Blendish.iconid(2, 23)
+      # @return [Integer] BND_ICON_OBJECT_DATA
       OBJECT_DATA = Blendish.iconid(3, 23)
+      # @return [Integer] BND_ICON_MESH_DATA
       MESH_DATA = Blendish.iconid(4, 23)
+      # @return [Integer] BND_ICON_CURVE_DATA
       CURVE_DATA = Blendish.iconid(5, 23)
+      # @return [Integer] BND_ICON_META_DATA
       META_DATA = Blendish.iconid(6, 23)
+      # @return [Integer] BND_ICON_LATTICE_DATA
       LATTICE_DATA = Blendish.iconid(7, 23)
+      # @return [Integer] BND_ICON_LAMP_DATA
       LAMP_DATA = Blendish.iconid(8, 23)
+      # @return [Integer] BND_ICON_MATERIAL_DATA
       MATERIAL_DATA = Blendish.iconid(9, 23)
+      # @return [Integer] BND_ICON_TEXTURE_DATA
       TEXTURE_DATA = Blendish.iconid(10, 23)
+      # @return [Integer] BND_ICON_ANIM_DATA
       ANIM_DATA = Blendish.iconid(11, 23)
+      # @return [Integer] BND_ICON_CAMERA_DATA
       CAMERA_DATA = Blendish.iconid(12, 23)
+      # @return [Integer] BND_ICON_PARTICLE_DATA
       PARTICLE_DATA = Blendish.iconid(13, 23)
+      # @return [Integer] BND_ICON_LIBRARY_DATA_DIRECT
       LIBRARY_DATA_DIRECT = Blendish.iconid(14, 23)
+      # @return [Integer] BND_ICON_GROUP
       GROUP = Blendish.iconid(15, 23)
+      # @return [Integer] BND_ICON_ARMATURE_DATA
       ARMATURE_DATA = Blendish.iconid(16, 23)
+      # @return [Integer] BND_ICON_POSE_DATA
       POSE_DATA = Blendish.iconid(17, 23)
+      # @return [Integer] BND_ICON_BONE_DATA
       BONE_DATA = Blendish.iconid(18, 23)
+      # @return [Integer] BND_ICON_CONSTRAINT
       CONSTRAINT = Blendish.iconid(19, 23)
+      # @return [Integer] BND_ICON_SHAPEKEY_DATA
       SHAPEKEY_DATA = Blendish.iconid(20, 23)
+      # @return [Integer] BND_ICON_CONSTRAINT_BONE
       CONSTRAINT_BONE = Blendish.iconid(21, 23)
+      # @return [Integer] BND_ICON_CAMERA_STEREO
       CAMERA_STEREO = Blendish.iconid(22, 23)
+      # @return [Integer] BND_ICON_PACKAGE
       PACKAGE = Blendish.iconid(23, 23)
+      # @return [Integer] BND_ICON_UGLYPACKAGE
       UGLYPACKAGE = Blendish.iconid(24, 23)
+      # @return [Integer] BND_ICON_BRUSH_DATA
       BRUSH_DATA = Blendish.iconid(0, 22)
+      # @return [Integer] BND_ICON_IMAGE_DATA
       IMAGE_DATA = Blendish.iconid(1, 22)
+      # @return [Integer] BND_ICON_FILE
       FILE = Blendish.iconid(2, 22)
+      # @return [Integer] BND_ICON_FCURVE
       FCURVE = Blendish.iconid(3, 22)
+      # @return [Integer] BND_ICON_FONT_DATA
       FONT_DATA = Blendish.iconid(4, 22)
+      # @return [Integer] BND_ICON_RENDER_RESULT
       RENDER_RESULT = Blendish.iconid(5, 22)
+      # @return [Integer] BND_ICON_SURFACE_DATA
       SURFACE_DATA = Blendish.iconid(6, 22)
+      # @return [Integer] BND_ICON_EMPTY_DATA
       EMPTY_DATA = Blendish.iconid(7, 22)
+      # @return [Integer] BND_ICON_SETTINGS
       SETTINGS = Blendish.iconid(8, 22)
+      # @return [Integer] BND_ICON_RENDER_ANIMATION
       RENDER_ANIMATION = Blendish.iconid(9, 22)
+      # @return [Integer] BND_ICON_RENDER_STILL
       RENDER_STILL = Blendish.iconid(10, 22)
+      # @return [Integer] BND_ICON_BOIDS
       BOIDS = Blendish.iconid(12, 22)
+      # @return [Integer] BND_ICON_STRANDS
       STRANDS = Blendish.iconid(13, 22)
+      # @return [Integer] BND_ICON_LIBRARY_DATA_INDIRECT
       LIBRARY_DATA_INDIRECT = Blendish.iconid(14, 22)
+      # @return [Integer] BND_ICON_GREASEPENCIL
       GREASEPENCIL = Blendish.iconid(15, 22)
+      # @return [Integer] BND_ICON_LINE_DATA
       LINE_DATA = Blendish.iconid(16, 22)
+      # @return [Integer] BND_ICON_GROUP_BONE
       GROUP_BONE = Blendish.iconid(18, 22)
+      # @return [Integer] BND_ICON_GROUP_VERTEX
       GROUP_VERTEX = Blendish.iconid(19, 22)
+      # @return [Integer] BND_ICON_GROUP_VCOL
       GROUP_VCOL = Blendish.iconid(20, 22)
+      # @return [Integer] BND_ICON_GROUP_UVS
       GROUP_UVS = Blendish.iconid(21, 22)
+      # @return [Integer] BND_ICON_RNA
       RNA = Blendish.iconid(24, 22)
+      # @return [Integer] BND_ICON_RNA_ADD
       RNA_ADD = Blendish.iconid(25, 22)
+      # @return [Integer] BND_ICON_OUTLINER_OB_EMPTY
       OUTLINER_OB_EMPTY = Blendish.iconid(0, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_MESH
       OUTLINER_OB_MESH = Blendish.iconid(1, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_CURVE
       OUTLINER_OB_CURVE = Blendish.iconid(2, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_LATTICE
       OUTLINER_OB_LATTICE = Blendish.iconid(3, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_META
       OUTLINER_OB_META = Blendish.iconid(4, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_LAMP
       OUTLINER_OB_LAMP = Blendish.iconid(5, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_CAMERA
       OUTLINER_OB_CAMERA = Blendish.iconid(6, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_ARMATURE
       OUTLINER_OB_ARMATURE = Blendish.iconid(7, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_FONT
       OUTLINER_OB_FONT = Blendish.iconid(8, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_SURFACE
       OUTLINER_OB_SURFACE = Blendish.iconid(9, 20)
+      # @return [Integer] BND_ICON_OUTLINER_OB_SPEAKER
       OUTLINER_OB_SPEAKER = Blendish.iconid(10, 20)
+      # @return [Integer] BND_ICON_RESTRICT_VIEW_OFF
       RESTRICT_VIEW_OFF = Blendish.iconid(19, 20)
+      # @return [Integer] BND_ICON_RESTRICT_VIEW_ON
       RESTRICT_VIEW_ON = Blendish.iconid(20, 20)
+      # @return [Integer] BND_ICON_RESTRICT_SELECT_OFF
       RESTRICT_SELECT_OFF = Blendish.iconid(21, 20)
+      # @return [Integer] BND_ICON_RESTRICT_SELECT_ON
       RESTRICT_SELECT_ON = Blendish.iconid(22, 20)
+      # @return [Integer] BND_ICON_RESTRICT_RENDER_OFF
       RESTRICT_RENDER_OFF = Blendish.iconid(23, 20)
+      # @return [Integer] BND_ICON_RESTRICT_RENDER_ON
       RESTRICT_RENDER_ON = Blendish.iconid(24, 20)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_EMPTY
       OUTLINER_DATA_EMPTY = Blendish.iconid(0, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_MESH
       OUTLINER_DATA_MESH = Blendish.iconid(1, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_CURVE
       OUTLINER_DATA_CURVE = Blendish.iconid(2, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_LATTICE
       OUTLINER_DATA_LATTICE = Blendish.iconid(3, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_META
       OUTLINER_DATA_META = Blendish.iconid(4, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_LAMP
       OUTLINER_DATA_LAMP = Blendish.iconid(5, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_CAMERA
       OUTLINER_DATA_CAMERA = Blendish.iconid(6, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_ARMATURE
       OUTLINER_DATA_ARMATURE = Blendish.iconid(7, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_FONT
       OUTLINER_DATA_FONT = Blendish.iconid(8, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_SURFACE
       OUTLINER_DATA_SURFACE = Blendish.iconid(9, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_SPEAKER
       OUTLINER_DATA_SPEAKER = Blendish.iconid(10, 19)
+      # @return [Integer] BND_ICON_OUTLINER_DATA_POSE
       OUTLINER_DATA_POSE = Blendish.iconid(11, 19)
+      # @return [Integer] BND_ICON_MESH_PLANE
       MESH_PLANE = Blendish.iconid(0, 18)
+      # @return [Integer] BND_ICON_MESH_CUBE
       MESH_CUBE = Blendish.iconid(1, 18)
+      # @return [Integer] BND_ICON_MESH_CIRCLE
       MESH_CIRCLE = Blendish.iconid(2, 18)
+      # @return [Integer] BND_ICON_MESH_UVSPHERE
       MESH_UVSPHERE = Blendish.iconid(3, 18)
+      # @return [Integer] BND_ICON_MESH_ICOSPHERE
       MESH_ICOSPHERE = Blendish.iconid(4, 18)
+      # @return [Integer] BND_ICON_MESH_GRID
       MESH_GRID = Blendish.iconid(5, 18)
+      # @return [Integer] BND_ICON_MESH_MONKEY
       MESH_MONKEY = Blendish.iconid(6, 18)
+      # @return [Integer] BND_ICON_MESH_CYLINDER
       MESH_CYLINDER = Blendish.iconid(7, 18)
+      # @return [Integer] BND_ICON_MESH_TORUS
       MESH_TORUS = Blendish.iconid(8, 18)
+      # @return [Integer] BND_ICON_MESH_CONE
       MESH_CONE = Blendish.iconid(9, 18)
+      # @return [Integer] BND_ICON_LAMP_POINT
       LAMP_POINT = Blendish.iconid(12, 18)
+      # @return [Integer] BND_ICON_LAMP_SUN
       LAMP_SUN = Blendish.iconid(13, 18)
+      # @return [Integer] BND_ICON_LAMP_SPOT
       LAMP_SPOT = Blendish.iconid(14, 18)
+      # @return [Integer] BND_ICON_LAMP_HEMI
       LAMP_HEMI = Blendish.iconid(15, 18)
+      # @return [Integer] BND_ICON_LAMP_AREA
       LAMP_AREA = Blendish.iconid(16, 18)
+      # @return [Integer] BND_ICON_META_EMPTY
       META_EMPTY = Blendish.iconid(19, 18)
+      # @return [Integer] BND_ICON_META_PLANE
       META_PLANE = Blendish.iconid(20, 18)
+      # @return [Integer] BND_ICON_META_CUBE
       META_CUBE = Blendish.iconid(21, 18)
+      # @return [Integer] BND_ICON_META_BALL
       META_BALL = Blendish.iconid(22, 18)
+      # @return [Integer] BND_ICON_META_ELLIPSOID
       META_ELLIPSOID = Blendish.iconid(23, 18)
+      # @return [Integer] BND_ICON_META_CAPSULE
       META_CAPSULE = Blendish.iconid(24, 18)
+      # @return [Integer] BND_ICON_SURFACE_NCURVE
       SURFACE_NCURVE = Blendish.iconid(0, 17)
+      # @return [Integer] BND_ICON_SURFACE_NCIRCLE
       SURFACE_NCIRCLE = Blendish.iconid(1, 17)
+      # @return [Integer] BND_ICON_SURFACE_NSURFACE
       SURFACE_NSURFACE = Blendish.iconid(2, 17)
+      # @return [Integer] BND_ICON_SURFACE_NCYLINDER
       SURFACE_NCYLINDER = Blendish.iconid(3, 17)
+      # @return [Integer] BND_ICON_SURFACE_NSPHERE
       SURFACE_NSPHERE = Blendish.iconid(4, 17)
+      # @return [Integer] BND_ICON_SURFACE_NTORUS
       SURFACE_NTORUS = Blendish.iconid(5, 17)
+      # @return [Integer] BND_ICON_CURVE_BEZCURVE
       CURVE_BEZCURVE = Blendish.iconid(9, 17)
+      # @return [Integer] BND_ICON_CURVE_BEZCIRCLE
       CURVE_BEZCIRCLE = Blendish.iconid(10, 17)
+      # @return [Integer] BND_ICON_CURVE_NCURVE
       CURVE_NCURVE = Blendish.iconid(11, 17)
+      # @return [Integer] BND_ICON_CURVE_NCIRCLE
       CURVE_NCIRCLE = Blendish.iconid(12, 17)
+      # @return [Integer] BND_ICON_CURVE_PATH
       CURVE_PATH = Blendish.iconid(13, 17)
+      # @return [Integer] BND_ICON_COLOR_RED
       COLOR_RED = Blendish.iconid(19, 17)
+      # @return [Integer] BND_ICON_COLOR_GREEN
       COLOR_GREEN = Blendish.iconid(20, 17)
+      # @return [Integer] BND_ICON_COLOR_BLUE
       COLOR_BLUE = Blendish.iconid(21, 17)
+      # @return [Integer] BND_ICON_FORCE_FORCE
       FORCE_FORCE = Blendish.iconid(0, 16)
+      # @return [Integer] BND_ICON_FORCE_WIND
       FORCE_WIND = Blendish.iconid(1, 16)
+      # @return [Integer] BND_ICON_FORCE_VORTEX
       FORCE_VORTEX = Blendish.iconid(2, 16)
+      # @return [Integer] BND_ICON_FORCE_MAGNETIC
       FORCE_MAGNETIC = Blendish.iconid(3, 16)
+      # @return [Integer] BND_ICON_FORCE_HARMONIC
       FORCE_HARMONIC = Blendish.iconid(4, 16)
+      # @return [Integer] BND_ICON_FORCE_CHARGE
       FORCE_CHARGE = Blendish.iconid(5, 16)
+      # @return [Integer] BND_ICON_FORCE_LENNARDJONES
       FORCE_LENNARDJONES = Blendish.iconid(6, 16)
+      # @return [Integer] BND_ICON_FORCE_TEXTURE
       FORCE_TEXTURE = Blendish.iconid(7, 16)
+      # @return [Integer] BND_ICON_FORCE_CURVE
       FORCE_CURVE = Blendish.iconid(8, 16)
+      # @return [Integer] BND_ICON_FORCE_BOID
       FORCE_BOID = Blendish.iconid(9, 16)
+      # @return [Integer] BND_ICON_FORCE_TURBULENCE
       FORCE_TURBULENCE = Blendish.iconid(10, 16)
+      # @return [Integer] BND_ICON_FORCE_DRAG
       FORCE_DRAG = Blendish.iconid(11, 16)
+      # @return [Integer] BND_ICON_FORCE_SMOKEFLOW
       FORCE_SMOKEFLOW = Blendish.iconid(12, 16)
+      # @return [Integer] BND_ICON_MODIFIER
       MODIFIER = Blendish.iconid(0, 12)
+      # @return [Integer] BND_ICON_MOD_WAVE
       MOD_WAVE = Blendish.iconid(1, 12)
+      # @return [Integer] BND_ICON_MOD_BUILD
       MOD_BUILD = Blendish.iconid(2, 12)
+      # @return [Integer] BND_ICON_MOD_DECIM
       MOD_DECIM = Blendish.iconid(3, 12)
+      # @return [Integer] BND_ICON_MOD_MIRROR
       MOD_MIRROR = Blendish.iconid(4, 12)
+      # @return [Integer] BND_ICON_MOD_SOFT
       MOD_SOFT = Blendish.iconid(5, 12)
+      # @return [Integer] BND_ICON_MOD_SUBSURF
       MOD_SUBSURF = Blendish.iconid(6, 12)
+      # @return [Integer] BND_ICON_HOOK
       HOOK = Blendish.iconid(7, 12)
+      # @return [Integer] BND_ICON_MOD_PHYSICS
       MOD_PHYSICS = Blendish.iconid(8, 12)
+      # @return [Integer] BND_ICON_MOD_PARTICLES
       MOD_PARTICLES = Blendish.iconid(9, 12)
+      # @return [Integer] BND_ICON_MOD_BOOLEAN
       MOD_BOOLEAN = Blendish.iconid(10, 12)
+      # @return [Integer] BND_ICON_MOD_EDGESPLIT
       MOD_EDGESPLIT = Blendish.iconid(11, 12)
+      # @return [Integer] BND_ICON_MOD_ARRAY
       MOD_ARRAY = Blendish.iconid(12, 12)
+      # @return [Integer] BND_ICON_MOD_UVPROJECT
       MOD_UVPROJECT = Blendish.iconid(13, 12)
+      # @return [Integer] BND_ICON_MOD_DISPLACE
       MOD_DISPLACE = Blendish.iconid(14, 12)
+      # @return [Integer] BND_ICON_MOD_CURVE
       MOD_CURVE = Blendish.iconid(15, 12)
+      # @return [Integer] BND_ICON_MOD_LATTICE
       MOD_LATTICE = Blendish.iconid(16, 12)
+      # @return [Integer] BND_ICON_CONSTRAINT_DATA
       CONSTRAINT_DATA = Blendish.iconid(17, 12)
+      # @return [Integer] BND_ICON_MOD_ARMATURE
       MOD_ARMATURE = Blendish.iconid(18, 12)
+      # @return [Integer] BND_ICON_MOD_SHRINKWRAP
       MOD_SHRINKWRAP = Blendish.iconid(19, 12)
+      # @return [Integer] BND_ICON_MOD_CAST
       MOD_CAST = Blendish.iconid(20, 12)
+      # @return [Integer] BND_ICON_MOD_MESHDEFORM
       MOD_MESHDEFORM = Blendish.iconid(21, 12)
+      # @return [Integer] BND_ICON_MOD_BEVEL
       MOD_BEVEL = Blendish.iconid(22, 12)
+      # @return [Integer] BND_ICON_MOD_SMOOTH
       MOD_SMOOTH = Blendish.iconid(23, 12)
+      # @return [Integer] BND_ICON_MOD_SIMPLEDEFORM
       MOD_SIMPLEDEFORM = Blendish.iconid(24, 12)
+      # @return [Integer] BND_ICON_MOD_MASK
       MOD_MASK = Blendish.iconid(25, 12)
+      # @return [Integer] BND_ICON_MOD_CLOTH
       MOD_CLOTH = Blendish.iconid(0, 11)
+      # @return [Integer] BND_ICON_MOD_EXPLODE
       MOD_EXPLODE = Blendish.iconid(1, 11)
+      # @return [Integer] BND_ICON_MOD_FLUIDSIM
       MOD_FLUIDSIM = Blendish.iconid(2, 11)
+      # @return [Integer] BND_ICON_MOD_MULTIRES
       MOD_MULTIRES = Blendish.iconid(3, 11)
+      # @return [Integer] BND_ICON_MOD_SMOKE
       MOD_SMOKE = Blendish.iconid(4, 11)
+      # @return [Integer] BND_ICON_MOD_SOLIDIFY
       MOD_SOLIDIFY = Blendish.iconid(5, 11)
+      # @return [Integer] BND_ICON_MOD_SCREW
       MOD_SCREW = Blendish.iconid(6, 11)
+      # @return [Integer] BND_ICON_MOD_VERTEX_WEIGHT
       MOD_VERTEX_WEIGHT = Blendish.iconid(7, 11)
+      # @return [Integer] BND_ICON_MOD_DYNAMICPAINT
       MOD_DYNAMICPAINT = Blendish.iconid(8, 11)
+      # @return [Integer] BND_ICON_MOD_REMESH
       MOD_REMESH = Blendish.iconid(9, 11)
+      # @return [Integer] BND_ICON_MOD_OCEAN
       MOD_OCEAN = Blendish.iconid(10, 11)
+      # @return [Integer] BND_ICON_MOD_WARP
       MOD_WARP = Blendish.iconid(11, 11)
+      # @return [Integer] BND_ICON_MOD_SKIN
       MOD_SKIN = Blendish.iconid(12, 11)
+      # @return [Integer] BND_ICON_MOD_TRIANGULATE
       MOD_TRIANGULATE = Blendish.iconid(13, 11)
+      # @return [Integer] BND_ICON_MOD_WIREFRAME
       MOD_WIREFRAME = Blendish.iconid(14, 11)
+      # @return [Integer] BND_ICON_REC
       REC = Blendish.iconid(0, 10)
+      # @return [Integer] BND_ICON_PLAY
       PLAY = Blendish.iconid(1, 10)
+      # @return [Integer] BND_ICON_FF
       FF = Blendish.iconid(2, 10)
+      # @return [Integer] BND_ICON_REW
       REW = Blendish.iconid(3, 10)
+      # @return [Integer] BND_ICON_PAUSE
       PAUSE = Blendish.iconid(4, 10)
+      # @return [Integer] BND_ICON_PREV_KEYFRAME
       PREV_KEYFRAME = Blendish.iconid(5, 10)
+      # @return [Integer] BND_ICON_NEXT_KEYFRAME
       NEXT_KEYFRAME = Blendish.iconid(6, 10)
+      # @return [Integer] BND_ICON_PLAY_AUDIO
       PLAY_AUDIO = Blendish.iconid(7, 10)
+      # @return [Integer] BND_ICON_PLAY_REVERSE
       PLAY_REVERSE = Blendish.iconid(8, 10)
+      # @return [Integer] BND_ICON_PREVIEW_RANGE
       PREVIEW_RANGE = Blendish.iconid(9, 10)
+      # @return [Integer] BND_ICON_ACTION_TWEAK
       ACTION_TWEAK = Blendish.iconid(10, 10)
+      # @return [Integer] BND_ICON_PMARKER_ACT
       PMARKER_ACT = Blendish.iconid(11, 10)
+      # @return [Integer] BND_ICON_PMARKER_SEL
       PMARKER_SEL = Blendish.iconid(12, 10)
+      # @return [Integer] BND_ICON_PMARKER
       PMARKER = Blendish.iconid(13, 10)
+      # @return [Integer] BND_ICON_MARKER_HLT
       MARKER_HLT = Blendish.iconid(14, 10)
+      # @return [Integer] BND_ICON_MARKER
       MARKER = Blendish.iconid(15, 10)
+      # @return [Integer] BND_ICON_SPACE2
       SPACE2 = Blendish.iconid(16, 10)
+      # @return [Integer] BND_ICON_SPACE3
       SPACE3 = Blendish.iconid(17, 10)
+      # @return [Integer] BND_ICON_KEYINGSET
       KEYINGSET = Blendish.iconid(18, 10)
+      # @return [Integer] BND_ICON_KEY_DEHLT
       KEY_DEHLT = Blendish.iconid(19, 10)
+      # @return [Integer] BND_ICON_KEY_HLT
       KEY_HLT = Blendish.iconid(20, 10)
+      # @return [Integer] BND_ICON_MUTE_IPO_OFF
       MUTE_IPO_OFF = Blendish.iconid(21, 10)
+      # @return [Integer] BND_ICON_MUTE_IPO_ON
       MUTE_IPO_ON = Blendish.iconid(22, 10)
+      # @return [Integer] BND_ICON_VISIBLE_IPO_OFF
       VISIBLE_IPO_OFF = Blendish.iconid(23, 10)
+      # @return [Integer] BND_ICON_VISIBLE_IPO_ON
       VISIBLE_IPO_ON = Blendish.iconid(24, 10)
+      # @return [Integer] BND_ICON_DRIVER
       DRIVER = Blendish.iconid(25, 10)
+      # @return [Integer] BND_ICON_SOLO_OFF
       SOLO_OFF = Blendish.iconid(0, 9)
+      # @return [Integer] BND_ICON_SOLO_ON
       SOLO_ON = Blendish.iconid(1, 9)
+      # @return [Integer] BND_ICON_FRAME_PREV
       FRAME_PREV = Blendish.iconid(2, 9)
+      # @return [Integer] BND_ICON_FRAME_NEXT
       FRAME_NEXT = Blendish.iconid(3, 9)
+      # @return [Integer] BND_ICON_NLA_PUSHDOWN
       NLA_PUSHDOWN = Blendish.iconid(4, 9)
+      # @return [Integer] BND_ICON_IPO_CONSTANT
       IPO_CONSTANT = Blendish.iconid(5, 9)
+      # @return [Integer] BND_ICON_IPO_LINEAR
       IPO_LINEAR = Blendish.iconid(6, 9)
+      # @return [Integer] BND_ICON_IPO_BEZIER
       IPO_BEZIER = Blendish.iconid(7, 9)
+      # @return [Integer] BND_ICON_IPO_SINE
       IPO_SINE = Blendish.iconid(8, 9)
+      # @return [Integer] BND_ICON_IPO_QUAD
       IPO_QUAD = Blendish.iconid(9, 9)
+      # @return [Integer] BND_ICON_IPO_CUBIC
       IPO_CUBIC = Blendish.iconid(10, 9)
+      # @return [Integer] BND_ICON_IPO_QUART
       IPO_QUART = Blendish.iconid(11, 9)
+      # @return [Integer] BND_ICON_IPO_QUINT
       IPO_QUINT = Blendish.iconid(12, 9)
+      # @return [Integer] BND_ICON_IPO_EXPO
       IPO_EXPO = Blendish.iconid(13, 9)
+      # @return [Integer] BND_ICON_IPO_CIRC
       IPO_CIRC = Blendish.iconid(14, 9)
+      # @return [Integer] BND_ICON_IPO_BOUNCE
       IPO_BOUNCE = Blendish.iconid(15, 9)
+      # @return [Integer] BND_ICON_IPO_ELASTIC
       IPO_ELASTIC = Blendish.iconid(16, 9)
+      # @return [Integer] BND_ICON_IPO_BACK
       IPO_BACK = Blendish.iconid(17, 9)
+      # @return [Integer] BND_ICON_IPO_EASE_IN
       IPO_EASE_IN = Blendish.iconid(18, 9)
+      # @return [Integer] BND_ICON_IPO_EASE_OUT
       IPO_EASE_OUT = Blendish.iconid(19, 9)
+      # @return [Integer] BND_ICON_IPO_EASE_IN_OUT
       IPO_EASE_IN_OUT = Blendish.iconid(20, 9)
+      # @return [Integer] BND_ICON_VERTEXSEL
       VERTEXSEL = Blendish.iconid(0, 8)
+      # @return [Integer] BND_ICON_EDGESEL
       EDGESEL = Blendish.iconid(1, 8)
+      # @return [Integer] BND_ICON_FACESEL
       FACESEL = Blendish.iconid(2, 8)
+      # @return [Integer] BND_ICON_LOOPSEL
       LOOPSEL = Blendish.iconid(3, 8)
+      # @return [Integer] BND_ICON_ROTATE
       ROTATE = Blendish.iconid(5, 8)
+      # @return [Integer] BND_ICON_CURSOR
       CURSOR = Blendish.iconid(6, 8)
+      # @return [Integer] BND_ICON_ROTATECOLLECTION
       ROTATECOLLECTION = Blendish.iconid(7, 8)
+      # @return [Integer] BND_ICON_ROTATECENTER
       ROTATECENTER = Blendish.iconid(8, 8)
+      # @return [Integer] BND_ICON_ROTACTIVE
       ROTACTIVE = Blendish.iconid(9, 8)
+      # @return [Integer] BND_ICON_ALIGN
       ALIGN = Blendish.iconid(10, 8)
+      # @return [Integer] BND_ICON_SMOOTHCURVE
       SMOOTHCURVE = Blendish.iconid(12, 8)
+      # @return [Integer] BND_ICON_SPHERECURVE
       SPHERECURVE = Blendish.iconid(13, 8)
+      # @return [Integer] BND_ICON_ROOTCURVE
       ROOTCURVE = Blendish.iconid(14, 8)
+      # @return [Integer] BND_ICON_SHARPCURVE
       SHARPCURVE = Blendish.iconid(15, 8)
+      # @return [Integer] BND_ICON_LINCURVE
       LINCURVE = Blendish.iconid(16, 8)
+      # @return [Integer] BND_ICON_NOCURVE
       NOCURVE = Blendish.iconid(17, 8)
+      # @return [Integer] BND_ICON_RNDCURVE
       RNDCURVE = Blendish.iconid(18, 8)
+      # @return [Integer] BND_ICON_PROP_OFF
       PROP_OFF = Blendish.iconid(19, 8)
+      # @return [Integer] BND_ICON_PROP_ON
       PROP_ON = Blendish.iconid(20, 8)
+      # @return [Integer] BND_ICON_PROP_CON
       PROP_CON = Blendish.iconid(21, 8)
+      # @return [Integer] BND_ICON_SCULPT_DYNTOPO
       SCULPT_DYNTOPO = Blendish.iconid(22, 8)
+      # @return [Integer] BND_ICON_PARTICLE_POINT
       PARTICLE_POINT = Blendish.iconid(23, 8)
+      # @return [Integer] BND_ICON_PARTICLE_TIP
       PARTICLE_TIP = Blendish.iconid(24, 8)
+      # @return [Integer] BND_ICON_PARTICLE_PATH
       PARTICLE_PATH = Blendish.iconid(25, 8)
+      # @return [Integer] BND_ICON_MAN_TRANS
       MAN_TRANS = Blendish.iconid(0, 7)
+      # @return [Integer] BND_ICON_MAN_ROT
       MAN_ROT = Blendish.iconid(1, 7)
+      # @return [Integer] BND_ICON_MAN_SCALE
       MAN_SCALE = Blendish.iconid(2, 7)
+      # @return [Integer] BND_ICON_MANIPUL
       MANIPUL = Blendish.iconid(3, 7)
+      # @return [Integer] BND_ICON_SNAP_OFF
       SNAP_OFF = Blendish.iconid(4, 7)
+      # @return [Integer] BND_ICON_SNAP_ON
       SNAP_ON = Blendish.iconid(5, 7)
+      # @return [Integer] BND_ICON_SNAP_NORMAL
       SNAP_NORMAL = Blendish.iconid(6, 7)
+      # @return [Integer] BND_ICON_SNAP_INCREMENT
       SNAP_INCREMENT = Blendish.iconid(7, 7)
+      # @return [Integer] BND_ICON_SNAP_VERTEX
       SNAP_VERTEX = Blendish.iconid(8, 7)
+      # @return [Integer] BND_ICON_SNAP_EDGE
       SNAP_EDGE = Blendish.iconid(9, 7)
+      # @return [Integer] BND_ICON_SNAP_FACE
       SNAP_FACE = Blendish.iconid(10, 7)
+      # @return [Integer] BND_ICON_SNAP_VOLUME
       SNAP_VOLUME = Blendish.iconid(11, 7)
+      # @return [Integer] BND_ICON_STICKY_UVS_LOC
       STICKY_UVS_LOC = Blendish.iconid(13, 7)
+      # @return [Integer] BND_ICON_STICKY_UVS_DISABLE
       STICKY_UVS_DISABLE = Blendish.iconid(14, 7)
+      # @return [Integer] BND_ICON_STICKY_UVS_VERT
       STICKY_UVS_VERT = Blendish.iconid(15, 7)
+      # @return [Integer] BND_ICON_CLIPUV_DEHLT
       CLIPUV_DEHLT = Blendish.iconid(16, 7)
+      # @return [Integer] BND_ICON_CLIPUV_HLT
       CLIPUV_HLT = Blendish.iconid(17, 7)
+      # @return [Integer] BND_ICON_SNAP_PEEL_OBJECT
       SNAP_PEEL_OBJECT = Blendish.iconid(18, 7)
+      # @return [Integer] BND_ICON_GRID
       GRID = Blendish.iconid(19, 7)
+      # @return [Integer] BND_ICON_PASTEDOWN
       PASTEDOWN = Blendish.iconid(0, 6)
+      # @return [Integer] BND_ICON_COPYDOWN
       COPYDOWN = Blendish.iconid(1, 6)
+      # @return [Integer] BND_ICON_PASTEFLIPUP
       PASTEFLIPUP = Blendish.iconid(2, 6)
+      # @return [Integer] BND_ICON_PASTEFLIPDOWN
       PASTEFLIPDOWN = Blendish.iconid(3, 6)
+      # @return [Integer] BND_ICON_SNAP_SURFACE
       SNAP_SURFACE = Blendish.iconid(8, 6)
+      # @return [Integer] BND_ICON_AUTOMERGE_ON
       AUTOMERGE_ON = Blendish.iconid(9, 6)
+      # @return [Integer] BND_ICON_AUTOMERGE_OFF
       AUTOMERGE_OFF = Blendish.iconid(10, 6)
+      # @return [Integer] BND_ICON_RETOPO
       RETOPO = Blendish.iconid(11, 6)
+      # @return [Integer] BND_ICON_UV_VERTEXSEL
       UV_VERTEXSEL = Blendish.iconid(12, 6)
+      # @return [Integer] BND_ICON_UV_EDGESEL
       UV_EDGESEL = Blendish.iconid(13, 6)
+      # @return [Integer] BND_ICON_UV_FACESEL
       UV_FACESEL = Blendish.iconid(14, 6)
+      # @return [Integer] BND_ICON_UV_ISLANDSEL
       UV_ISLANDSEL = Blendish.iconid(15, 6)
+      # @return [Integer] BND_ICON_UV_SYNC_SELECT
       UV_SYNC_SELECT = Blendish.iconid(16, 6)
+      # @return [Integer] BND_ICON_BBOX
       BBOX = Blendish.iconid(0, 5)
+      # @return [Integer] BND_ICON_WIRE
       WIRE = Blendish.iconid(1, 5)
+      # @return [Integer] BND_ICON_SOLID
       SOLID = Blendish.iconid(2, 5)
+      # @return [Integer] BND_ICON_SMOOTH
       SMOOTH = Blendish.iconid(3, 5)
+      # @return [Integer] BND_ICON_POTATO
       POTATO = Blendish.iconid(4, 5)
+      # @return [Integer] BND_ICON_ORTHO
       ORTHO = Blendish.iconid(6, 5)
+      # @return [Integer] BND_ICON_LOCKVIEW_OFF
       LOCKVIEW_OFF = Blendish.iconid(9, 5)
+      # @return [Integer] BND_ICON_LOCKVIEW_ON
       LOCKVIEW_ON = Blendish.iconid(10, 5)
+      # @return [Integer] BND_ICON_AXIS_SIDE
       AXIS_SIDE = Blendish.iconid(12, 5)
+      # @return [Integer] BND_ICON_AXIS_FRONT
       AXIS_FRONT = Blendish.iconid(13, 5)
+      # @return [Integer] BND_ICON_AXIS_TOP
       AXIS_TOP = Blendish.iconid(14, 5)
+      # @return [Integer] BND_ICON_NDOF_DOM
       NDOF_DOM = Blendish.iconid(15, 5)
+      # @return [Integer] BND_ICON_NDOF_TURN
       NDOF_TURN = Blendish.iconid(16, 5)
+      # @return [Integer] BND_ICON_NDOF_FLY
       NDOF_FLY = Blendish.iconid(17, 5)
+      # @return [Integer] BND_ICON_NDOF_TRANS
       NDOF_TRANS = Blendish.iconid(18, 5)
+      # @return [Integer] BND_ICON_LAYER_USED
       LAYER_USED = Blendish.iconid(19, 5)
+      # @return [Integer] BND_ICON_LAYER_ACTIVE
       LAYER_ACTIVE = Blendish.iconid(20, 5)
+      # @return [Integer] BND_ICON_SORTALPHA
       SORTALPHA = Blendish.iconid(0, 3)
+      # @return [Integer] BND_ICON_SORTBYEXT
       SORTBYEXT = Blendish.iconid(1, 3)
+      # @return [Integer] BND_ICON_SORTTIME
       SORTTIME = Blendish.iconid(2, 3)
+      # @return [Integer] BND_ICON_SORTSIZE
       SORTSIZE = Blendish.iconid(3, 3)
+      # @return [Integer] BND_ICON_LONGDISPLAY
       LONGDISPLAY = Blendish.iconid(4, 3)
+      # @return [Integer] BND_ICON_SHORTDISPLAY
       SHORTDISPLAY = Blendish.iconid(5, 3)
+      # @return [Integer] BND_ICON_GHOST
       GHOST = Blendish.iconid(6, 3)
+      # @return [Integer] BND_ICON_IMGDISPLAY
       IMGDISPLAY = Blendish.iconid(7, 3)
+      # @return [Integer] BND_ICON_SAVE_AS
       SAVE_AS = Blendish.iconid(8, 3)
+      # @return [Integer] BND_ICON_SAVE_COPY
       SAVE_COPY = Blendish.iconid(9, 3)
+      # @return [Integer] BND_ICON_BOOKMARKS
       BOOKMARKS = Blendish.iconid(10, 3)
+      # @return [Integer] BND_ICON_FONTPREVIEW
       FONTPREVIEW = Blendish.iconid(11, 3)
+      # @return [Integer] BND_ICON_FILTER
       FILTER = Blendish.iconid(12, 3)
+      # @return [Integer] BND_ICON_NEWFOLDER
       NEWFOLDER = Blendish.iconid(13, 3)
+      # @return [Integer] BND_ICON_OPEN_RECENT
       OPEN_RECENT = Blendish.iconid(14, 3)
+      # @return [Integer] BND_ICON_FILE_PARENT
       FILE_PARENT = Blendish.iconid(15, 3)
+      # @return [Integer] BND_ICON_FILE_REFRESH
       FILE_REFRESH = Blendish.iconid(16, 3)
+      # @return [Integer] BND_ICON_FILE_FOLDER
       FILE_FOLDER = Blendish.iconid(17, 3)
+      # @return [Integer] BND_ICON_FILE_BLANK
       FILE_BLANK = Blendish.iconid(18, 3)
+      # @return [Integer] BND_ICON_FILE_BLEND
       FILE_BLEND = Blendish.iconid(19, 3)
+      # @return [Integer] BND_ICON_FILE_IMAGE
       FILE_IMAGE = Blendish.iconid(20, 3)
+      # @return [Integer] BND_ICON_FILE_MOVIE
       FILE_MOVIE = Blendish.iconid(21, 3)
+      # @return [Integer] BND_ICON_FILE_SCRIPT
       FILE_SCRIPT = Blendish.iconid(22, 3)
+      # @return [Integer] BND_ICON_FILE_SOUND
       FILE_SOUND = Blendish.iconid(23, 3)
+      # @return [Integer] BND_ICON_FILE_FONT
       FILE_FONT = Blendish.iconid(24, 3)
+      # @return [Integer] BND_ICON_FILE_TEXT
       FILE_TEXT = Blendish.iconid(25, 3)
+      # @return [Integer] BND_ICON_RECOVER_AUTO
       RECOVER_AUTO = Blendish.iconid(0, 2)
+      # @return [Integer] BND_ICON_SAVE_PREFS
       SAVE_PREFS = Blendish.iconid(1, 2)
+      # @return [Integer] BND_ICON_LINK_BLEND
       LINK_BLEND = Blendish.iconid(2, 2)
+      # @return [Integer] BND_ICON_APPEND_BLEND
       APPEND_BLEND = Blendish.iconid(3, 2)
+      # @return [Integer] BND_ICON_IMPORT
       IMPORT = Blendish.iconid(4, 2)
+      # @return [Integer] BND_ICON_EXPORT
       EXPORT = Blendish.iconid(5, 2)
+      # @return [Integer] BND_ICON_EXTERNAL_DATA
       EXTERNAL_DATA = Blendish.iconid(6, 2)
+      # @return [Integer] BND_ICON_LOAD_FACTORY
       LOAD_FACTORY = Blendish.iconid(7, 2)
+      # @return [Integer] BND_ICON_LOOP_BACK
       LOOP_BACK = Blendish.iconid(13, 2)
+      # @return [Integer] BND_ICON_LOOP_FORWARDS
       LOOP_FORWARDS = Blendish.iconid(14, 2)
+      # @return [Integer] BND_ICON_BACK
       BACK = Blendish.iconid(15, 2)
+      # @return [Integer] BND_ICON_FORWARD
       FORWARD = Blendish.iconid(16, 2)
+      # @return [Integer] BND_ICON_FILE_BACKUP
       FILE_BACKUP = Blendish.iconid(24, 2)
+      # @return [Integer] BND_ICON_DISK_DRIVE
       DISK_DRIVE = Blendish.iconid(25, 2)
+      # @return [Integer] BND_ICON_MATPLANE
       MATPLANE = Blendish.iconid(0, 1)
+      # @return [Integer] BND_ICON_MATSPHERE
       MATSPHERE = Blendish.iconid(1, 1)
+      # @return [Integer] BND_ICON_MATCUBE
       MATCUBE = Blendish.iconid(2, 1)
+      # @return [Integer] BND_ICON_MONKEY
       MONKEY = Blendish.iconid(3, 1)
+      # @return [Integer] BND_ICON_HAIR
       HAIR = Blendish.iconid(4, 1)
+      # @return [Integer] BND_ICON_ALIASED
       ALIASED = Blendish.iconid(5, 1)
+      # @return [Integer] BND_ICON_ANTIALIASED
       ANTIALIASED = Blendish.iconid(6, 1)
+      # @return [Integer] BND_ICON_MAT_SPHERE_SKY
       MAT_SPHERE_SKY = Blendish.iconid(7, 1)
+      # @return [Integer] BND_ICON_WORDWRAP_OFF
       WORDWRAP_OFF = Blendish.iconid(12, 1)
+      # @return [Integer] BND_ICON_WORDWRAP_ON
       WORDWRAP_ON = Blendish.iconid(13, 1)
+      # @return [Integer] BND_ICON_SYNTAX_OFF
       SYNTAX_OFF = Blendish.iconid(14, 1)
+      # @return [Integer] BND_ICON_SYNTAX_ON
       SYNTAX_ON = Blendish.iconid(15, 1)
+      # @return [Integer] BND_ICON_LINENUMBERS_OFF
       LINENUMBERS_OFF = Blendish.iconid(16, 1)
+      # @return [Integer] BND_ICON_LINENUMBERS_ON
       LINENUMBERS_ON = Blendish.iconid(17, 1)
+      # @return [Integer] BND_ICON_SCRIPTPLUGINS
       SCRIPTPLUGINS = Blendish.iconid(18, 1)
+      # @return [Integer] BND_ICON_SEQ_SEQUENCER
       SEQ_SEQUENCER = Blendish.iconid(0, 0)
+      # @return [Integer] BND_ICON_SEQ_PREVIEW
       SEQ_PREVIEW = Blendish.iconid(1, 0)
+      # @return [Integer] BND_ICON_SEQ_LUMA_WAVEFORM
       SEQ_LUMA_WAVEFORM = Blendish.iconid(2, 0)
+      # @return [Integer] BND_ICON_SEQ_CHROMA_SCOPE
       SEQ_CHROMA_SCOPE = Blendish.iconid(3, 0)
+      # @return [Integer] BND_ICON_SEQ_HISTOGRAM
       SEQ_HISTOGRAM = Blendish.iconid(4, 0)
+      # @return [Integer] BND_ICON_SEQ_SPLITVIEW
       SEQ_SPLITVIEW = Blendish.iconid(5, 0)
+      # @return [Integer] BND_ICON_IMAGE_RGB
       IMAGE_RGB = Blendish.iconid(9, 0)
+      # @return [Integer] BND_ICON_IMAGE_RGB_ALPHA
       IMAGE_RGB_ALPHA = Blendish.iconid(10, 0)
+      # @return [Integer] BND_ICON_IMAGE_ALPHA
       IMAGE_ALPHA = Blendish.iconid(11, 0)
+      # @return [Integer] BND_ICON_IMAGE_ZDEPTH
       IMAGE_ZDEPTH = Blendish.iconid(12, 0)
-      IMAGEFILE = Blendish.iconid(13, 0),
+      # @return [Integer] BND_ICON_IMAGEFILE
+      IMAGEFILE = Blendish.iconid(13, 0)
+      # !@endgroup
     end
   end
 end

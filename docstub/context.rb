@@ -1,5 +1,7 @@
 module OUI
   module Blendish
+    # Blendish main drawing context, though this class is initializable
+    # its underlying structure is singleton, this may change in the future.
     class Context
       # @!attribute theme
       #   @return [Theme]
@@ -7,7 +9,7 @@ module OUI
       # @!attribute icon_image
       #   @return [Integer]
       attr_writer :icon_image
-      # @!attribute icon_image
+      # @!attribute [w] icon_image
       #   @return [Integer]
       attr_writer :font
 
@@ -288,21 +290,6 @@ module OUI
       def select_corners(r, flags)
       end
 
-      # @param [WidgetTheme] theme
-      # @param [Integer] state
-      # @param [Boolean] flip_active
-      # @param [Nanovg::Color] shade_top
-      # @param [Nanovg::Color] shade_down
-      # @return [Array<Nanovg::Color>[2]] the new shade_top and shade_down
-      def inner_colors(theme, state, flip_active, shade_top, shade_down)
-      end
-
-      # @param [WidgetTheme] theme
-      # @param [Integer] state
-      # @return [Nanovg::Color]
-      def text_color(theme, state)
-      end
-
       # @param [Float] x
       # @param [Float] y
       # @param [Float] w
@@ -323,7 +310,7 @@ module OUI
       # @param [Float] cr2
       # @param [Float] cr3
       # @return [self]
-      def rounded_box()
+      def rounded_box(ctx, x, y, w, h, cr0, cr1, cr2, cr3)
       end
 
       # @param [Nanovg::Context] ctx
@@ -401,7 +388,7 @@ module OUI
       # @param [Float] cr3
       # @param [Nanovg::Color] color
       # @return [self]
-      def outline_box(x, y, w, h, cr0, cr1, cr2, cr3, color)
+      def outline_box(ctx, x, y, w, h, cr0, cr1, cr2, cr3, color)
       end
 
       # @param [Nanovg::Context] ctx
@@ -431,7 +418,7 @@ module OUI
       # @param [Float] fontsize
       # @param [String, nil] label
       # @return [self]
-      def node_icon_label(ctx, x, y, w, h, iconid, color, shadow_color)
+      def node_icon_label(ctx, x, y, w, h, iconid, color, shadow_color, align, fontsize, label)
       end
 
       # @param [Nanovg::Context] ctx
@@ -483,7 +470,7 @@ module OUI
       # @param [Float] y
       # @param [Float] s
       # @param [Nanovg::Color] color
-      def up_down_arrow()
+      def up_down_arrow(ctx, x, y, s, color)
       end
 
       # @param [Nanovg::Context] ctx
@@ -493,12 +480,6 @@ module OUI
       # @param [Nanovg::Color] color
       # @return [self]
       def node_arrow_down(ctx, x, y, s, color)
-      end
-
-      # @param [NodeTheme] theme
-      # @param [Integer] state
-      # @return [Nanovg::Color]
-      def node_wire_color()
       end
     end
   end
