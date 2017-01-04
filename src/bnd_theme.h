@@ -4,10 +4,11 @@
 #include <mruby.h>
 #include <mruby/class.h>
 #include <mruby/data.h>
+#include "bnd_common.h"
 
-extern const struct mrb_data_type mrb_bnd_theme_type;
+MRB_BND_EXTERN const struct mrb_data_type mrb_bnd_theme_type;
 
-void mrb_bnd_theme_init(mrb_state *mrb, struct RClass *mod);
-mrb_value mrb_bnd_theme_value(mrb_state *mrb, BNDtheme theme);
+MRB_BND_EXTERN void mrb_bnd_theme_init(mrb_state *mrb, struct RClass *mod);
+MRB_BND_EXTERN mrb_value mrb_bnd_theme_value(mrb_state *mrb, BNDtheme theme);
 
 #endif

@@ -4,7 +4,8 @@
 #include <mruby.h>
 #include <mruby/data.h>
 #include <mruby/class.h>
+#include "bnd_common.h"
 
-void mrb_bnd_init(mrb_state *mrb, struct RClass *mod);
+MRB_BND_EXTERN void mrb_bnd_init(mrb_state *mrb, struct RClass *mod);
 
 #endif

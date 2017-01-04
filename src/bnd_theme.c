@@ -21,7 +21,7 @@ theme_free(mrb_state *mrb, void *ptr)
 
 const struct mrb_data_type mrb_bnd_theme_type = { "BNDtheme", theme_free };
 
-mrb_value
+MRB_BND_EXTERN mrb_value
 mrb_bnd_theme_value(mrb_state *mrb, BNDtheme theme)
 {
   BNDtheme *utheme;

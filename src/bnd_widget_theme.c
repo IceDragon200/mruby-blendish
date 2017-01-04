@@ -26,7 +26,7 @@ get_widget_theme(mrb_state *mrb, mrb_value self)
   return (BNDwidgetTheme*)mrb_data_get_ptr(mrb, self, &mrb_bnd_widget_theme_type);
 }
 
-mrb_value
+MRB_BND_EXTERN mrb_value
 mrb_bnd_widget_theme_value(mrb_state *mrb, BNDwidgetTheme theme)
 {
   BNDwidgetTheme *utheme;
@@ -93,7 +93,7 @@ widget_theme_text_color(mrb_state *mrb, mrb_value self)
   return mrb_nvg_color_value(mrb, bndTextColor(theme, state));
 }
 
-void
+MRB_BND_EXTERN void
 mrb_bnd_widget_theme_init(mrb_state *mrb, struct RClass *mod)
 {
   widget_theme_class = mrb_define_class_under(mrb, mod, "WidgetTheme", mrb->object_class);

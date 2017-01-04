@@ -855,7 +855,7 @@ bnd_node_arrow_down(mrb_state *mrb, mrb_value self)
   return self;
 }
 
-void
+MRB_BND_EXTERN void
 mrb_mruby_blendish_gem_init(mrb_state* mrb)
 {
   oui_module = mrb_define_module(mrb, "OUI");
@@ -1425,7 +1425,7 @@ mrb_mruby_blendish_gem_init(mrb_state* mrb)
   mrb_define_const(mrb, bnd_icon_module, "IMAGEFILE", mrb_fixnum_value(BND_ICON_IMAGEFILE));
 }
 
-void
+MRB_BND_EXTERN void
 mrb_mruby_blendish_gem_final(mrb_state* mrb)
 {
   //

@@ -26,7 +26,7 @@ get_node_theme(mrb_state *mrb, mrb_value self)
   return (BNDnodeTheme*)mrb_data_get_ptr(mrb, self, &mrb_bnd_node_theme_type);
 }
 
-mrb_value
+MRB_BND_EXTERN mrb_value
 mrb_bnd_node_theme_value(mrb_state *mrb, BNDnodeTheme theme)
 {
   BNDnodeTheme *utheme;
@@ -75,7 +75,7 @@ node_theme_node_wire_color(mrb_state *mrb, mrb_value self)
   return mrb_nvg_color_value(mrb, bndNodeWireColor(theme, state));
 }
 
-void
+MRB_BND_EXTERN void
 mrb_bnd_node_theme_init(mrb_state *mrb, struct RClass *mod)
 {
   node_theme_class = mrb_define_class_under(mrb, mod, "NodeTheme", mrb->object_class);

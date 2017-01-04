@@ -13,8 +13,10 @@
 #define BLENDISH_NO_NVG_TYPEDEFS
 #include <blendish.h>
 
-extern mrb_value mrb_nvg_color_value(mrb_state*, NVGcolor);
-extern const struct mrb_data_type mrb_nvg_color_type;
-extern const struct mrb_data_type mrb_nvg_context_type;
+#define MRB_BND_EXTERN extern
+
+MRB_BND_EXTERN mrb_value mrb_nvg_color_value(mrb_state*, NVGcolor);
+MRB_BND_EXTERN const struct mrb_data_type mrb_nvg_color_type;
+MRB_BND_EXTERN const struct mrb_data_type mrb_nvg_context_type;
 
 #endif
