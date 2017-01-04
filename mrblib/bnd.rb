@@ -20,5 +20,5 @@ module OUI
   end
 end
 
-# alias
+# Alias for OUI::Blendish
 BND = OUI::Blendish
